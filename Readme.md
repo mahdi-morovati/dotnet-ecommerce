@@ -36,3 +36,5 @@ Application call Domain
 * کانفیگ کردن اینترفیس ها و پیاده سازیشون
 *  so create ShopManagement.Configuration
 * and create ShopManagementBootstrapper
+
+* Create ServiceHost Project and inject ShopManagementBootstrapper to Program.cs

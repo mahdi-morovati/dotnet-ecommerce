@@ -16,7 +16,7 @@ public class ShopManagementBootstrapper
      * AddTransient<IProductCategory, ProductCategory>
      * هر ماژول کانفیگوریشنش رو داخل خودش داشته باشه 
      */
-    public static void Cofigure(IServiceCollection services, string connectionString)
+    public static void Configure(IServiceCollection services, string connectionString)
     {
         services.AddTransient<IProductCategoryApplication, ProductCategoryApplication>();
         services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
