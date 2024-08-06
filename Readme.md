@@ -32,3 +32,7 @@ Application call Domain
 * create IRepository in 0_framework/Domain
 * create Repository in 0_framework/Infrastructure
 * implement IProductCategoryRepository and ProductCategoryRepository from IRepository
+
+* کانفیگ کردن اینترفیس ها و پیاده سازیشون
+*  so create ShopManagement.Configuration
+* and create ShopManagementBootstrapper
