@@ -28,3 +28,7 @@ Application call Domain
   * install Microsoft.EntityFrameworkCore.Tools/8.0.7
   * create ProductCategoryMapping
   * create ProductCategoryRepository
+
+* create IRepository in 0_framework/Domain
+* create Repository in 0_framework/Infrastructure
+* implement IProductCategoryRepository and ProductCategoryRepository from IRepository
