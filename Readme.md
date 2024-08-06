@@ -20,3 +20,11 @@ Application call repository from infrastructure
 Application call Domain
 
 * create ProductCategoryApplication in ShopManagement.Application
+
+* create ShopManagement.Infrastructure.EFCore
+  * creating mappings, repositories, DbContext
+  * install Microsoft.EntityFrameworkCore/8.0.7
+  * install Microsoft.EntityFrameworkCore.SqlServer/8.0.7
+  * install Microsoft.EntityFrameworkCore.Tools/8.0.7
+  * create ProductCategoryMapping
+  * create ProductCategoryRepository
