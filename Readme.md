@@ -80,3 +80,10 @@ class.
 
     * create ShopManagement.Infrastructure.EFCore.Mapping.ProductMapping and define relationship with category.(define
       relationship in category too)
+* define DbSet<Product> in ShopContext
+* create ShopManagement.Infrastructure.EFCore.Repository.ProductRepository
+
+* bind interfaces in ShopManagement.Configuration.ShopManagementBootstrapper
+
+  services.AddTransient<IProductApplication, ProductApplication>();
+  services.AddTransient<IProductRepository, ProductRepository>();
