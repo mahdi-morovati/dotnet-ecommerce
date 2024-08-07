@@ -52,3 +52,10 @@ create ctor for initial data for creating model
 create edit for create editing data
 2- create IProductRepository in ShopManagement.Domain
 (productAgg)
+
+3- in ShopManagement.Application.Contracts create Product folder
+the application contract in fact is a place to define application interfaces. that is(that's) mean this classes are DTO class.
+* create CreateProduct class
+* create EdtProduct class
+* create ProductViewModel class
+* create ProductSearchModel class
