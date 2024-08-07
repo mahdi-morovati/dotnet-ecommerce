@@ -30,7 +30,7 @@ public class RepositoryBase<Tkey, T>: IRepository<Tkey, T> where T : class
 
     public void SaveChanges()
     {
-        throw new NotImplementedException();
+        _context.SaveChanges();
     }
 
     public bool Exists(Expression<Func<T, bool>> expression)
