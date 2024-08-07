@@ -1,4 +1,5 @@
 using _0_framework.Domain;
+using ShopManagement.Domain.ProductAgg;
 
 namespace ShopManagement.Domain.ProductCategoryAgg;
 
@@ -12,7 +13,14 @@ public class ProductCategory : EntityBase
     public string Keywords { get; private set; }
     public string MetaDescription { get; private set; }
     public string Slug { get; private set; }
-    
+
+    public List<Product> Products { get; private set; }
+
+    public ProductCategory()
+    {
+        Products = new List<Product>();
+    }
+
     public ProductCategory(string name, string description, string picture,
         string pictureAlt, string pictureTitle, string keywords, string metaDescription,
         string slug)
@@ -26,7 +34,7 @@ public class ProductCategory : EntityBase
         MetaDescription = metaDescription;
         Slug = slug;
     }
-    
+
     public void Edit(string name, string description, string picture,
         string pictureAlt, string pictureTitle, string keywords, string metaDescription,
         string slug)
@@ -34,7 +42,7 @@ public class ProductCategory : EntityBase
         Name = name;
         Description = description;
 
-        if(!string.IsNullOrWhiteSpace(picture))
+        if (!string.IsNullOrWhiteSpace(picture))
             Picture = picture;
 
         PictureAlt = pictureAlt;
@@ -43,5 +51,4 @@ public class ProductCategory : EntityBase
         MetaDescription = metaDescription;
         Slug = slug;
     }
-    
 }
