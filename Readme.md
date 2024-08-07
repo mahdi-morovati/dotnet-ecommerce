@@ -59,3 +59,18 @@ the application contract in fact is a place to define application interfaces. th
 * create EdtProduct class
 * create ProductViewModel class
 * create ProductSearchModel class
+
+* create IProductApplication contains this methods
+
+  OperationResult Create(CreateProduct command);
+  OperationResult Edit(EditProduct command);
+  EditProduct GetDetails(long id);
+  List<ProductViewModel> Search(ProductSearchModel searchModel);
+
+* define this methods in IProductRepository
+
+  EditProduct GetDetails(long id);
+  List<ProductViewModel> Search(ProductSearchModel searchModel);
+
+* create ShopManagement.Application.ProductApplication that implements IProductApplication
+* 
