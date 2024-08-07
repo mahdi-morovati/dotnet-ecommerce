@@ -1,3 +1,5 @@
+### ProductCategory CRUD
+
 * create Domain Class Library (ShopManagement.Domain)
 create ProductCategory class
 create IProductCategoryRepository
@@ -44,3 +46,4 @@ Application call Domain
   * implement ServiceHost.Areas.Administration.Pages.Shop.ProductCategories.IndexModel.OnGet
 
 * create Edit page
+----------------------------------------------------------------
