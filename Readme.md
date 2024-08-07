@@ -41,6 +41,6 @@ Application call Domain
 
 
 * create ServiceHost Project and add admin theme in Areas/Administration/
-* implement ServiceHost.Areas.Administration.Pages.Shop.ProductCategories.IndexModel.OnGet
+  * implement ServiceHost.Areas.Administration.Pages.Shop.ProductCategories.IndexModel.OnGet
 
 * create Edit page
