@@ -47,3 +47,8 @@ Application call Domain
 
 * create Edit page
 ----------------------------------------------------------------
+1- create Product model in ShopManagement.Domain (productAgg directory) and
+create ctor for initial data for creating model
+create edit for create editing data
+2- create IProductRepository in ShopManagement.Domain
+(productAgg)
