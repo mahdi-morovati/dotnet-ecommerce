@@ -10,4 +10,44 @@
       <ProjectReference Include="..\ShopManagement.Configuration\ShopManagement.Configuration.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Shop\ProductPictures\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Shop\ProductPictures\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Shop\ProductPictures\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Shop\Slides\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Shop\Slides\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Shop\Slides\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Shop\Orders\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Shop\Orders\Items.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Inventory\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Inventory\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Inventory\Increase.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Inventory\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Inventory\OperationLog.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Inventory\Reduce.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Discounts\ColleagueDiscounts\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Discounts\ColleagueDiscounts\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Discounts\ColleagueDiscounts\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Discounts\CustomerDiscounts\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Discounts\CustomerDiscounts\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Discounts\CustomerDiscounts\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Comments\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Blog\ArticleCategories\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Blog\ArticleCategories\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Blog\ArticleCategories\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Blog\Articles\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Blog\Articles\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Blog\Articles\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Accounts\Account\ChangePassword.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Accounts\Account\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Accounts\Account\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Accounts\Account\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Accounts\Role\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Accounts\Role\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Accounts\Role\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Shop\Products\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Shop\Products\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Shop\Products\Index.cshtml" />
+    </ItemGroup>
+
 </Project>
