@@ -38,3 +38,8 @@ Application call Domain
 * and create ShopManagementBootstrapper
 
 * Create ServiceHost Project and inject ShopManagementBootstrapper to Program.cs
+
+
+* create ServiceHost Project and add admin theme in Areas/Administration/
+* implement ServiceHost.Areas.Administration.Pages.Shop.ProductCategories.IndexModel.OnGet
+
