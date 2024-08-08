@@ -58,6 +58,11 @@ public class ProductCategoryApplication : IProductCategoryApplication
         return _productCategoryRepository.GetDetails(id);
     }
 
+    public List<ProductCategoryViewModel> GetProductCategories()
+    {
+        return _productCategoryRepository.GetProductCategories();
+    }
+
     public List<ProductCategoryViewModel> Search(ProductCategorySearchModel searchModel)
     {
         return _productCategoryRepository.Search(searchModel);

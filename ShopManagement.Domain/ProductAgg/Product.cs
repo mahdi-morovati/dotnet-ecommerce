@@ -16,6 +16,7 @@ public class Product : EntityBase
     public string Slug { get; private set; }
     public string Keywords { get; private set; }
     public string MetaDescription { get; private set; }
+    public DateTime CreationDate { get; private set; }
     public ProductCategory Category { get; private set; }
 
     public Product(string name, string code, string shortDescription, string description,

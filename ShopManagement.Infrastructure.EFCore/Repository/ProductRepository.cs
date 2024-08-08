@@ -41,6 +41,7 @@ public class ProductRepository : RepositoryBase<long, Product>, IProductReposito
             CategoryId = x.CategoryId,
             Code = x.Code,
             Picture = x.Picture,
+            CreationDate = x.CreationDate.ToString(),
         });
         if (!string.IsNullOrWhiteSpace(searchModel.Name))
         {

@@ -87,3 +87,15 @@ class.
 
   services.AddTransient<IProductApplication, ProductApplication>();
   services.AddTransient<IProductRepository, ProductRepository>();
+
+* create Products/ razor pages index
+* create: 
+  * ServiceHost.Areas.Administration.Pages.Shop.Products.IndexModel.ProductCategories
+  * ShopManagement.Domain.ProductCategoryAgg.IProductCategoryRepository.GetProductCategories
+  * ShopManagement.Infrastructure.EFCore.Repository.ProductCategoryRepository.GetProductCategories
+  * ShopManagement.Application.Contracts.ProductCategory.IProductCategoryApplication.GetProductCategories
+  * ShopManagement.Application.ProductCategoryApplication.GetProductCategories
+  * ServiceHost.Areas.Administration.Pages.Shop.Products.IndexModel.ProductCategories on OnGet method
+  * create ProductAdded migration
+  
+* 
