@@ -98,4 +98,4 @@ class.
   * ServiceHost.Areas.Administration.Pages.Shop.Products.IndexModel.ProductCategories on OnGet method
   * create ProductAdded migration
   
-* 
+* fix Edit.cshtml, Create.cshtml, ServiceHost.Areas.Administration.Pages.Shop.Products.IndexModel.OnGetEdit
