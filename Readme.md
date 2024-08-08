@@ -49,6 +49,7 @@ Application call Domain
 * create Edit page
 
 ----------------------------------------------------------------
+### Product CRUD
 1- create Product model in ShopManagement.Domain (productAgg directory) and
 create ctor for initial data for creating model
 create edit for create editing data
@@ -56,7 +57,7 @@ create edit for create editing data
 (productAgg)
 
 3- in ShopManagement.Application.Contracts create Product folder
-the application contract in fact is a place to define application interfaces. that is(that's) mean this classes are DTO
+the application contract in fact is a place to define application interfaces. that is(that's) mean these classes are DTO
 class.
 
 * create CreateProduct class
@@ -88,7 +89,7 @@ class.
   services.AddTransient<IProductApplication, ProductApplication>();
   services.AddTransient<IProductRepository, ProductRepository>();
 
-* create Products/ razor pages index
+* create Products/ razor pages index in ServiceHost
 * create: 
   * ServiceHost.Areas.Administration.Pages.Shop.Products.IndexModel.ProductCategories
   * ShopManagement.Domain.ProductCategoryAgg.IProductCategoryRepository.GetProductCategories
@@ -99,3 +100,6 @@ class.
   * create ProductAdded migration
   
 * fix Edit.cshtml, Create.cshtml, ServiceHost.Areas.Administration.Pages.Shop.Products.IndexModel.OnGetEdit
+----------------------------------------------------------------
+### ProductPicture
+  
