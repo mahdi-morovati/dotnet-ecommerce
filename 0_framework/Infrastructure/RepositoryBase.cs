@@ -3,7 +3,11 @@ using _0_framework.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace _0_framework.Infrastructure;
-
+/// <summary>
+/// This class represents a repository requirements
+/// </summary>
+/// <typeparam name="Tkey">The type of the id of the model</typeparam>
+/// <typeparam name="T">The model class</typeparam>
 public class RepositoryBase<Tkey, T>: IRepository<Tkey, T> where T : class
 {
     private readonly DbContext _context;
