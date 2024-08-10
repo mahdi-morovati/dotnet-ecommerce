@@ -17,13 +17,14 @@ public class ProductPictureRepository : RepositoryBase<long, ProductPicture>, IP
 
     public EditProductPicture GetDetails(long id)
     {
-        return _context.ProductPictures.Select(x => new EditProductPicture
-        {
-            Id = id,
-            Picture = x.Picture,
-            PictureAlt = x.PictureAlt,
-            PictureTitle = x.PictureTitle,
-        }).FirstOrDefault(x => x.Id == id);
+        return _context.ProductPictures
+            .Select(x => new EditProductPicture
+            {
+                Id = x.Id,
+                PictureAlt = x.PictureAlt,
+                PictureTitle = x.PictureTitle,
+                ProductId = x.ProductId
+            }).FirstOrDefault(x => x.Id == id);
     }
 
     public List<ProductPictureViewModel> Search(ProductPictureSearchModel searchModel)
@@ -38,6 +39,7 @@ public class ProductPictureRepository : RepositoryBase<long, ProductPicture>, IP
         {
             query = query.Where(x => x.ProductId == searchModel.ProductId);
         }
+
         return query.OrderByDescending(x => x.Id).ToList();
     }
 }

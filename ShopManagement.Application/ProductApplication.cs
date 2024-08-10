@@ -62,4 +62,9 @@ public class ProductApplication : IProductApplication
     {
         return _productRepository.Search(searchModel);
     }
+
+    public List<ProductViewModel> GetProducts()
+    {
+        return _productRepository.GetProducts();
+    }
 }
