@@ -113,4 +113,12 @@ class.
 * create ServiceHost/Pages/Shared/Components/Slide/Default.cshtml
 * create ServiceHost.ViewComponents.SlideViewComponent
 * wire up in ShopManagementBootstrapper
-* 
+
+----------------------------------------------------------------
+## Discount Management
+
+1- create DiscountManagement.Domain class library
+2- create DiscountManagement.Domain.CustomerDiscountAgg.CustomerDiscount (CustomerDiscount model, ICustomerDiscountRepository). create ctor and Edit methods for CustomerDiscount Domain.
+3- create DiscountManagement.Application.Contract class library
+4- create DiscountManagement.Application.Contract.CustomerDiscount.DefineCustomerDiscount
+5 - create DTOs in DiscountManagement.Application.Contract.CustomerDiscount (DefineCustomerDiscount, EditCustomerDiscount, CustomerDiscountViewModel, CustomerDiscountSearchModel, ICustomerDiscountApplication)
