@@ -16,8 +16,7 @@
       "applicationUrl": "http://localhost:5044",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "launchUrl": "http://localhost:5044/Administration/Shop/ProductCategories"
+      }
     },
     "https": {
       "commandName": "Project",

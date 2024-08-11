@@ -102,4 +102,14 @@ class.
 * fix Edit.cshtml, Create.cshtml, ServiceHost.Areas.Administration.Pages.Shop.Products.IndexModel.OnGetEdit
 ----------------------------------------------------------------
 ### ProductPicture
-  
+
+----------------------------------------------------------------
+### Slide
+ما برای اینکه بتونیم اسلایدهارو بیاریم یک کلاس لایبرری جدا درست میکنیم. و دلیل اینکه مثل همیشه نمیریم تو اپلیکیشن اینه که ما میخوایم مستقیم کانتکس اینجکت کنیم و ممکنه بخوایم چنتا کانتکست اینجکت کنیم و نکته دیگه اینکه لاجیکی نداریم صرفا قراره کوئری زده بشه به دیتابیس و دیتا بیاد 
+* create 01_LampshadeQuery Library class
+* _01_LampshadeQuery.Contracts.Slide.SlideQueryModel
+* create _01_LampshadeQuery.Contracts.Slide.ISlideQuery
+* create _01_LampshadeQuery.Query.SlideQuery
+* create ServiceHost/Pages/Shared/Components/Slide/Default.cshtml
+* create ServiceHost.ViewComponents.SlideViewComponent
+* 
