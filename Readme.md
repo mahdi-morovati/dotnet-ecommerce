@@ -112,4 +112,5 @@ class.
 * create _01_LampshadeQuery.Query.SlideQuery
 * create ServiceHost/Pages/Shared/Components/Slide/Default.cshtml
 * create ServiceHost.ViewComponents.SlideViewComponent
+* wire up in ShopManagementBootstrapper
 * 
