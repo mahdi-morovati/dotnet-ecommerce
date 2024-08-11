@@ -20,6 +20,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountManagement.Domain",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountManagement.Application.Contract", "DiscountManagement.Application.Contract\DiscountManagement.Application.Contract.csproj", "{5C7BF7B5-63B8-4DBF-89AD-40D17D3B9C11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountManagement.Application", "DiscountManagement.Application\DiscountManagement.Application.csproj", "{2C28CCEB-55EE-41DA-9D9E-F3AD092C43BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountManagement.Infrastructure.EFCore", "DiscountManagement.Infrastructure.EFCore\DiscountManagement.Infrastructure.EFCore.csproj", "{8C350E70-EB73-4ACF-860A-387C7266DE42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,5 +70,13 @@ Global
 		{5C7BF7B5-63B8-4DBF-89AD-40D17D3B9C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C7BF7B5-63B8-4DBF-89AD-40D17D3B9C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C7BF7B5-63B8-4DBF-89AD-40D17D3B9C11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C28CCEB-55EE-41DA-9D9E-F3AD092C43BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C28CCEB-55EE-41DA-9D9E-F3AD092C43BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C28CCEB-55EE-41DA-9D9E-F3AD092C43BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C28CCEB-55EE-41DA-9D9E-F3AD092C43BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C350E70-EB73-4ACF-860A-387C7266DE42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C350E70-EB73-4ACF-860A-387C7266DE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C350E70-EB73-4ACF-860A-387C7266DE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C350E70-EB73-4ACF-860A-387C7266DE42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
