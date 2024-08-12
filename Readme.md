@@ -130,3 +130,4 @@ class.
 in CustomDiscountRepository we need the product name for each discount. for do this we need inject the ShopContext, get products and loop on them and match with discount ProductId
 11- implement DiscountManagement.Application.CustomerDiscountApplication
 12- inject ServiceHost/Program.cs#L10-L10 DiscountManagementBootstrapper.Configure(builder.Services, connectionString);
+13- create migration DiscountManagement.Infrastructure.EFCore.Migrations

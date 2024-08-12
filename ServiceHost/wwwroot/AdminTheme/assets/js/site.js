@@ -40,6 +40,9 @@ $(document).ready(function () {
     $("#MainModal").on("shown.bs.modal",
         function () {
             window.location.hash = "##";
+            
+            //   چون مودال ها به صورت ایجکس میاد و تو صفحه وجود نداره نمیتونه این کد رو روش اجرا کنه
+            // برای اینکه بتونه این کد جاوا اسکریپت رو اجرا کنه ما میگیم وقتی مودال شو شد این کد رو اجرا کن. حالا مودال توی صفحه وجود داره و این کد میتونه روش اجرا بشه
             $('.persianDateInput').persianDatepicker({
                 format: 'YYYY/MM/DD',
                 autoClose: true

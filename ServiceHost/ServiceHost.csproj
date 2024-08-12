@@ -64,4 +64,8 @@
       <AdditionalFiles Include="Areas\Administration\Pages\Shop\Products\Index.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Areas\Administration\Pages\Discounts\" />
+    </ItemGroup>
+
 </Project>
