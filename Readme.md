@@ -131,3 +131,4 @@ in CustomDiscountRepository we need the product name for each discount. for do t
 11- implement DiscountManagement.Application.CustomerDiscountApplication
 12- inject ServiceHost/Program.cs#L10-L10 DiscountManagementBootstrapper.Configure(builder.Services, connectionString);
 13- create migration DiscountManagement.Infrastructure.EFCore.Migrations
+14- create CustomerDiscount pages
