@@ -120,10 +120,10 @@ class.
 1- create DiscountManagement.Domain class library
 2- create DiscountManagement.Domain.CustomerDiscountAgg.CustomerDiscount (CustomerDiscount model, ICustomerDiscountRepository). create ctor and Edit methods for CustomerDiscount Domain.
 3- create DiscountManagement.Application.Contract class library
-4- create DiscountManagement.Application.Contract.CustomerDiscount.DefineCustomerDiscount
-5 - create DTOs in DiscountManagement.Application.Contract.CustomerDiscount (DefineCustomerDiscount, EditCustomerDiscount, CustomerDiscountViewModel, CustomerDiscountSearchModel, ICustomerDiscountApplication)
-6- create DiscountManagement.Application (CustomerDiscountApplication : ICustomerDiscountApplication)
-7- DiscountManagement.Infrastructure.EFCore (DiscountContext : DbContext). define DbSet<CustomerDiscount>
-8- create DiscountManagement.Infrastructure.EFCore.Mapping.CustomerDiscountMapping
-9- create DiscountManagement.Infrastructure.EFCore.Repository.CustomerDiscountRepository
-10- 
+4 - create DTOs in DiscountManagement.Application.Contract.CustomerDiscount (DefineCustomerDiscount, EditCustomerDiscount, CustomerDiscountViewModel, CustomerDiscountSearchModel, ICustomerDiscountApplication)
+5- create DiscountManagement.Application (CustomerDiscountApplication : ICustomerDiscountApplication)
+6- DiscountManagement.Infrastructure.EFCore (DiscountContext : DbContext). define DbSet<CustomerDiscount>
+7- create DiscountManagement.Infrastructure.EFCore.Mapping.CustomerDiscountMapping
+8- create DiscountManagement.Infrastructure.EFCore.Repository.CustomerDiscountRepository
+9- implement DiscountContext
+10- implement CustomDiscountRepository

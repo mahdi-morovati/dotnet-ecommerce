@@ -1,50 +1,69 @@
 using System.Linq.Expressions;
+using _0_framework.Infrastructure;
 using DiscountManagement.Application.Contract.CustomerDiscount;
 using DiscountManagement.Domain.CustomerDiscountAgg;
+using ShopManagement.Infrastructure.EFCore;
 
 namespace DiscountManagement.Infrastructure.EFCore.Repository;
 
-public class CustomerDiscountRepository : ICustomerDiscountRepository
+public class CustomerDiscountRepository : RepositoryBase<long, CustomerDiscount>, ICustomerDiscountRepository
 {
     private readonly DiscountContext _context;
+    private readonly ShopContext _shopContext;
 
-    public CustomerDiscountRepository(DiscountContext context)
+    public CustomerDiscountRepository(DiscountContext context, ShopContext shopContext) : base(context)
     {
         _context = context;
+        _shopContext = shopContext;
     }
 
-    public CustomerDiscount Get(long id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public List<CustomerDiscount> Get()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Create(CustomerDiscount entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void SaveChanges()
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool Exists(Expression<Func<CustomerDiscount, bool>> expression)
-    {
-        throw new NotImplementedException();
-    }
 
     public List<CustomerDiscountViewModel> Search(CustomerDiscountSearchModel searchModel)
     {
-        throw new NotImplementedException();
+        var products = _shopContext.Products.Select(x => new { x.Id, x.Name }).ToList();
+        var query = _context.CustomerDiscounts.Select(x => new CustomerDiscountViewModel
+        {
+            Id = x.Id,
+            ProductId = x.ProductId,
+            DiscountRate = x.DiscountRate,
+            StartDate = x.StartDate.ToString(),
+            StartDateGr = x.StartDate,
+            EndDate = x.EndDate.ToString(),
+            EndDateGr = x.EndDate,
+            Reason = x.Reason
+        });
+        if (searchModel.ProductId > 0)
+        {
+            query = query.Where(x => x.ProductId == searchModel.ProductId);
+        }
+
+        if (!string.IsNullOrWhiteSpace(searchModel.StartDate))
+        {
+            var startDate = DateTime.Now;
+            query = query.Where(x => x.StartDateGr > startDate);
+        }
+
+        if (!string.IsNullOrWhiteSpace(searchModel.EndDate))
+        {
+            var endDate = DateTime.Now;
+            query = query.Where(x => x.EndDateGr > endDate);
+        }
+
+        var discounts = query.OrderByDescending(x => x.Id).ToList();
+        discounts.ForEach(discount => discount.Product = products.FirstOrDefault(x=>x.Id == discount.ProductId)?.Name);
+        return discounts;
     }
 
     public EditCustomerDiscount GetDetails(long id)
     {
-        throw new NotImplementedException();
+        return _context.CustomerDiscounts.Select(x => new EditCustomerDiscount
+        {
+            Id = x.Id,
+            ProductId = x.ProductId,
+            DiscountRate = x.DiscountRate,
+            StartDate = x.StartDate.ToString(),
+            EndDate = x.EndDate.ToString(),
+            Reason = x.Reason
+        }).FirstOrDefault(x => x.Id == id);
     }
 }
