@@ -118,17 +118,34 @@ class.
 ## Discount Management
 
 1- create DiscountManagement.Domain class library
+
 2- create DiscountManagement.Domain.CustomerDiscountAgg.CustomerDiscount (CustomerDiscount model, ICustomerDiscountRepository). create ctor and Edit methods for CustomerDiscount Domain.
+
 3- create DiscountManagement.Application.Contract class library
+
 4 - create DTOs in DiscountManagement.Application.Contract.CustomerDiscount (DefineCustomerDiscount, EditCustomerDiscount, CustomerDiscountViewModel, CustomerDiscountSearchModel, ICustomerDiscountApplication)
+
 5- create DiscountManagement.Application (CustomerDiscountApplication : ICustomerDiscountApplication)
+
 6- DiscountManagement.Infrastructure.EFCore (DiscountContext : DbContext). define DbSet<CustomerDiscount>
+
 7- create DiscountManagement.Infrastructure.EFCore.Mapping.CustomerDiscountMapping
+
 8- create DiscountManagement.Infrastructure.EFCore.Repository.CustomerDiscountRepository
+
 9- implement DiscountContext
+
 10- implement CustomDiscountRepository
 in CustomDiscountRepository we need the product name for each discount. for do this we need inject the ShopContext, get products and loop on them and match with discount ProductId
+
 11- implement DiscountManagement.Application.CustomerDiscountApplication
+
 12- inject ServiceHost/Program.cs#L10-L10 DiscountManagementBootstrapper.Configure(builder.Services, connectionString);
+
 13- create migration DiscountManagement.Infrastructure.EFCore.Migrations
+
 14- create CustomerDiscount pages
+
+**Colleague Discount**
+
+Since this type of discount always exists, it is defined separately from the customer discount
