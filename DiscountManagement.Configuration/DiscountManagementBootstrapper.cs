@@ -14,7 +14,7 @@ public class DiscountManagementBootstrapper
     {
         services.AddTransient<ICustomerDiscountApplication, CustomerDiscountApplication>();
         services.AddTransient<ICustomerDiscountRepository, CustomerDiscountRepository>();
-        
-         services.AddDbContext<DiscountContext>(x=>x.UseSqlServer(connectionString: connectionString));
+
+        services.AddDbContext<DiscountContext>(x => x.UseSqlServer(connectionString));
     }
 }
