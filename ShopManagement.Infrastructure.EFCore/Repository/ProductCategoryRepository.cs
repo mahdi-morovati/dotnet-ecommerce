@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using _0_framework.Application;
 using _0_framework.Infrastructure;
 using ShopManagement.Application.Contracts.ProductCategory;
 using ShopManagement.Domain.ProductCategoryAgg;
@@ -46,7 +47,7 @@ public class ProductCategoryRepository : RepositoryBase<long, ProductCategory>, 
             Id = x.Id,
             Picture = x.Picture,
             Name = x.Name,
-            CreationDate = x.CreationDate.ToString(),
+            CreationDate = x.CreationDate.ToFarsi(),
         });
 
         if (!string.IsNullOrWhiteSpace(searchModel.Name))

@@ -127,3 +127,4 @@ class.
 8- create DiscountManagement.Infrastructure.EFCore.Repository.CustomerDiscountRepository
 9- implement DiscountContext
 10- implement CustomDiscountRepository
+in CustomDiscountRepository we need the product name for each discount. for do this we need inject the ShopContext, get products and loop on them and match with discount ProductId

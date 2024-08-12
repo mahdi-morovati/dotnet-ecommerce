@@ -1,3 +1,4 @@
+using _0_framework.Application;
 using _0_framework.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application.Contracts.Product;
@@ -42,7 +43,7 @@ public class ProductRepository : RepositoryBase<long, Product>, IProductReposito
             CategoryId = x.CategoryId,
             Code = x.Code,
             Picture = x.Picture,
-            CreationDate = x.CreationDate.ToString(),
+            CreationDate = x.CreationDate.ToFarsi(),
         });
         if (!string.IsNullOrWhiteSpace(searchModel.Name))
         {

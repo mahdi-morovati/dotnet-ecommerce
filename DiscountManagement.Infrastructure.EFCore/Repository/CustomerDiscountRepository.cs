@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using _0_framework.Application;
 using _0_framework.Infrastructure;
 using DiscountManagement.Application.Contract.CustomerDiscount;
 using DiscountManagement.Domain.CustomerDiscountAgg;
@@ -26,9 +27,9 @@ public class CustomerDiscountRepository : RepositoryBase<long, CustomerDiscount>
             Id = x.Id,
             ProductId = x.ProductId,
             DiscountRate = x.DiscountRate,
-            StartDate = x.StartDate.ToString(),
+            StartDate = x.StartDate.ToFarsi(),
             StartDateGr = x.StartDate,
-            EndDate = x.EndDate.ToString(),
+            EndDate = x.EndDate.ToFarsi(),
             EndDateGr = x.EndDate,
             Reason = x.Reason
         });
@@ -39,14 +40,12 @@ public class CustomerDiscountRepository : RepositoryBase<long, CustomerDiscount>
 
         if (!string.IsNullOrWhiteSpace(searchModel.StartDate))
         {
-            var startDate = DateTime.Now;
-            query = query.Where(x => x.StartDateGr > startDate);
+            query = query.Where(x => x.StartDateGr > searchModel.StartDate.ToGeorgianDateTime());
         }
 
         if (!string.IsNullOrWhiteSpace(searchModel.EndDate))
         {
-            var endDate = DateTime.Now;
-            query = query.Where(x => x.EndDateGr > endDate);
+            query = query.Where(x => x.EndDateGr > searchModel.EndDate.ToGeorgianDateTime());
         }
 
         var discounts = query.OrderByDescending(x => x.Id).ToList();
