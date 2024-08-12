@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountManagement.Applicat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountManagement.Infrastructure.EFCore", "DiscountManagement.Infrastructure.EFCore\DiscountManagement.Infrastructure.EFCore.csproj", "{8C350E70-EB73-4ACF-860A-387C7266DE42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountManagement.Configuration", "DiscountManagement.Configuration\DiscountManagement.Configuration.csproj", "{F2DAB830-E84F-4B1F-A365-DF95E5DF9E14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,5 +80,9 @@ Global
 		{8C350E70-EB73-4ACF-860A-387C7266DE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C350E70-EB73-4ACF-860A-387C7266DE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C350E70-EB73-4ACF-860A-387C7266DE42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2DAB830-E84F-4B1F-A365-DF95E5DF9E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2DAB830-E84F-4B1F-A365-DF95E5DF9E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2DAB830-E84F-4B1F-A365-DF95E5DF9E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2DAB830-E84F-4B1F-A365-DF95E5DF9E14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
