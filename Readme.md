@@ -161,3 +161,5 @@ Since this type of discount always exists, it is defined separately from the cus
 * create InventoryDbContext
 * create repository
 * create InventoryManagement.Infrastructure.Configuration.InventoryManagementBootstrapper
+* create migration
+* 
