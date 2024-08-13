@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InventoryManagement.Infrastructure.EFCore;
 
-public class InventoryDnbContext : DbContext
+public class InventoryContext : DbContext
 {
     public DbSet<Inventory> Inventory { get; set; }
 
-    protected InventoryDnbContext(DbContextOptions<InventoryDnbContext> options) : base(options)
+    protected InventoryContext(DbContextOptions<InventoryContext> options) : base(options)
     {
     }
 

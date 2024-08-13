@@ -12,6 +12,6 @@ public class InventoryManagementBootstrapper
     {
         services.AddTransient<IInventoryRepository, InventoryRepository>();
 
-        services.AddDbContext<InventoryDnbContext>(x => x.UseSqlServer(connectionString));
+        services.AddDbContext<InventoryContext>(x => x.UseSqlServer(connectionString));
     }
 }
