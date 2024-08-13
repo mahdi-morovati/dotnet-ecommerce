@@ -163,3 +163,4 @@ Since this type of discount always exists, it is defined separately from the cus
 * create InventoryManagement.Infrastructure.Configuration.InventoryManagementBootstrapper
 * create migration
 * create InventoryManagement.Application.InventoryApplication. AddTransient in Inventory InventoryManagement.Infrastructure.Configuration.InventoryManagementBootstrapper.Configure
+* add inventory pages in ServiceHost

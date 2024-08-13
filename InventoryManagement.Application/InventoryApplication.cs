@@ -36,7 +36,7 @@ public class InventoryApplication : IInventoryApplication
             return operation.Failed(ApplicationMessages.RecordNotFound);
         }
 
-        if (_inventoryRepository.Exists(x => x.Id == command.Id && x.ProductId == command.ProductId))
+        if (_inventoryRepository.Exists(x => x.ProductId == command.ProductId && x.Id != command.Id))
         {
             return operation.Failed(ApplicationMessages.DuplicatedRecord);
         }
