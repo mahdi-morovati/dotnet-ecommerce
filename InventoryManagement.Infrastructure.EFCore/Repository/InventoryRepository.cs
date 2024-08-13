@@ -29,7 +29,7 @@ public class InventoryRepository : RepositoryBase<long, Inventory>, IInventoryRe
 
     public Inventory GetBy(long productId)
     {
-        return _context.Inventory.FirstOrDefault(x => x.Id == productId);
+        return _context.Inventory.FirstOrDefault(x => x.ProductId == productId);
     }
 
     public List<InventoryViewModel> Search(InventorySearchModel searchModel)
