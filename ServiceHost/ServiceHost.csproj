@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\DiscountManagement.Configuration\DiscountManagement.Configuration.csproj" />
       <ProjectReference Include="..\ShopManagement.Configuration\ShopManagement.Configuration.csproj" />
     </ItemGroup>
 
@@ -61,6 +62,10 @@
       <AdditionalFiles Include="Areas\Administration\Pages\Shop\Products\Create.cshtml" />
       <AdditionalFiles Include="Areas\Administration\Pages\Shop\Products\Edit.cshtml" />
       <AdditionalFiles Include="Areas\Administration\Pages\Shop\Products\Index.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Areas\Administration\Pages\Discounts\" />
     </ItemGroup>
 
 </Project>

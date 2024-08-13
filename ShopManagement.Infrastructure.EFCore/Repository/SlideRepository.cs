@@ -1,3 +1,4 @@
+using _0_framework.Application;
 using _0_framework.Infrastructure;
 using ShopManagement.Application.Contracts.Slide;
 using ShopManagement.Domain.SlideAgg;
@@ -36,7 +37,7 @@ public class SlideRepository : RepositoryBase<long, Slide>, ISlideRepository
             Heading = x.Heading,
             Picture = x.Picture,
             Title = x.Title,
-            CreationDate = x.CreationDate.ToString()
+            CreationDate = x.CreationDate.ToFarsi()
         }).OrderByDescending(x => x.Id).ToList();
     }
 }
