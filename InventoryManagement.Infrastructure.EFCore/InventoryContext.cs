@@ -8,7 +8,7 @@ public class InventoryContext : DbContext
 {
     public DbSet<Inventory> Inventory { get; set; }
 
-    protected InventoryContext(DbContextOptions<InventoryContext> options) : base(options)
+    public InventoryContext(DbContextOptions<InventoryContext> options) : base(options)
     {
     }
 
