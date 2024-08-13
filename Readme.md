@@ -156,3 +156,4 @@ Since this type of discount always exists, it is defined separately from the cus
 * create InventoryManagement.Domain.InventoryAgg.Inventory
 * create IInventoryRepository
 * create InventoryOperation
+* create Inventory DTOs, app interface

@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountManagement.Configur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Domain", "InventoryManagement.Domain\InventoryManagement.Domain.csproj", "{1A001CA4-E448-4230-9E92-251B2D607CD0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Application.Contract", "InventoryManagement.Application.Contract\InventoryManagement.Application.Contract.csproj", "{246943A0-88E2-4970-AE0E-B2A44F13FE39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,5 +92,9 @@ Global
 		{1A001CA4-E448-4230-9E92-251B2D607CD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A001CA4-E448-4230-9E92-251B2D607CD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A001CA4-E448-4230-9E92-251B2D607CD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{246943A0-88E2-4970-AE0E-B2A44F13FE39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{246943A0-88E2-4970-AE0E-B2A44F13FE39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{246943A0-88E2-4970-AE0E-B2A44F13FE39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{246943A0-88E2-4970-AE0E-B2A44F13FE39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
