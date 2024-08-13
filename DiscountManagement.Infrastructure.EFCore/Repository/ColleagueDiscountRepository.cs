@@ -42,6 +42,7 @@ public class ColleagueDiscountRepository : RepositoryBase<long, ColleagueDiscoun
             CreationDate = x.CreationDate.ToFarsi(),
             DiscountRate = x.DiscountRate,
             ProductId = x.ProductId,
+            IsRemoved = x.IsRemoved,
         });
 
         if (searchModel.ProductId > 0)
