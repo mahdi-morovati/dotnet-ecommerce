@@ -157,3 +157,6 @@ Since this type of discount always exists, it is defined separately from the cus
 * create IInventoryRepository
 * create InventoryOperation
 * create Inventory DTOs, app interface
+* create InventoryMapping
+* create InventoryDbContext
+* create repository
