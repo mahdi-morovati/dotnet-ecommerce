@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountManagement.Infrastr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountManagement.Configuration", "DiscountManagement.Configuration\DiscountManagement.Configuration.csproj", "{F2DAB830-E84F-4B1F-A365-DF95E5DF9E14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Domain", "InventoryManagement.Domain\InventoryManagement.Domain.csproj", "{1A001CA4-E448-4230-9E92-251B2D607CD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,5 +86,9 @@ Global
 		{F2DAB830-E84F-4B1F-A365-DF95E5DF9E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2DAB830-E84F-4B1F-A365-DF95E5DF9E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2DAB830-E84F-4B1F-A365-DF95E5DF9E14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A001CA4-E448-4230-9E92-251B2D607CD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A001CA4-E448-4230-9E92-251B2D607CD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A001CA4-E448-4230-9E92-251B2D607CD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A001CA4-E448-4230-9E92-251B2D607CD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
