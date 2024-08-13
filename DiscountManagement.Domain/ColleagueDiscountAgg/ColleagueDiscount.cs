@@ -25,7 +25,7 @@ public class ColleagueDiscount : EntityBase
         IsRemoved = true;
     }
 
-    public void Resetore()
+    public void Restore()
     {
         IsRemoved = false;
     }
