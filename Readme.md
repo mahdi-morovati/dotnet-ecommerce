@@ -164,3 +164,4 @@ Since this type of discount always exists, it is defined separately from the cus
 * create migration
 * create InventoryManagement.Application.InventoryApplication. AddTransient in Inventory InventoryManagement.Infrastructure.Configuration.InventoryManagementBootstrapper.Configure
 * add inventory pages in ServiceHost
+* create OperationLog page

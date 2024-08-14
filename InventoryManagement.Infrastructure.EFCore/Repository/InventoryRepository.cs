@@ -1,3 +1,4 @@
+using _0_framework.Application;
 using _0_framework.Infrastructure;
 using InventoryManagement.Application.Contract.Inventory;
 using InventoryManagement.Domain.InventoryAgg;
@@ -41,7 +42,8 @@ public class InventoryRepository : RepositoryBase<long, Inventory>, IInventoryRe
             UnitPrice = x.UnitPrice,
             InStock = x.InStock,
             ProductId = x.ProductId,
-            CurrentCount = x.CalculateCurrentCount()
+            CurrentCount = x.CalculateCurrentCount(),
+            CreationDate = x.CreationDate.ToFarsi(),
         });
         if (searchModel.ProductId > 0)
         {
@@ -57,4 +59,25 @@ public class InventoryRepository : RepositoryBase<long, Inventory>, IInventoryRe
         inventory.ForEach(item => { item.Product = products.FirstOrDefault(x => x.Id == item.ProductId)?.Name; });
         return inventory;
     }
+    
+    public List<InventoryOperationViewModel> GetOperationLog(long inventoryId)
+    {
+        var inventory = _context.Inventory.FirstOrDefault(x => x.Id == inventoryId);
+        var operations = inventory.Operations.Select(x => new InventoryOperationViewModel
+        {
+            Id = x.Id,
+            Count = x.Count,
+            CurrentCount = x.CurrentCount,
+            Description = x.Description,
+            Operation = x.Operation,
+            Operator = "مدیر سیستم",
+            OperationDate = x.OperationDate.ToFarsi(),
+            OperatorId = x.OperatorId,
+            OrderId = x.OrderId
+        }).OrderByDescending(x => x.Id).ToList();
+        
+
+        return operations;
+    }
+    
 }
