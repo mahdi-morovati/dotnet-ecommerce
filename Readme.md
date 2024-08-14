@@ -149,3 +149,19 @@ in CustomDiscountRepository we need the product name for each discount. for do t
 **Colleague Discount**
 
 Since this type of discount always exists, it is defined separately from the customer discount
+
+----------------------------------------------------------------
+### Inventory
+
+* create InventoryManagement.Domain.InventoryAgg.Inventory
+* create IInventoryRepository
+* create InventoryOperation
+* create Inventory DTOs, app interface
+* create InventoryMapping
+* create InventoryDbContext
+* create repository
+* create InventoryManagement.Infrastructure.Configuration.InventoryManagementBootstrapper
+* create migration
+* create InventoryManagement.Application.InventoryApplication. AddTransient in Inventory InventoryManagement.Infrastructure.Configuration.InventoryManagementBootstrapper.Configure
+* add inventory pages in ServiceHost
+* create OperationLog page
