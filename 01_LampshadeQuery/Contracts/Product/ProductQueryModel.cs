@@ -14,7 +14,7 @@ public class ProductQueryModel
     public string Category { get; set; }
     public string CategorySlug { get; set; }
     public bool HasDiscount { get; set; }
-    // public string DiscountExpireDate { get; set; }
+    public string DiscountExpireDate { get; set; }
     public string Code { get; set; }
     public string ShortDescription { get; set; }
     public string Slug { get; set; }
