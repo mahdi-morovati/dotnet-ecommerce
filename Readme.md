@@ -173,3 +173,4 @@ Since this type of discount always exists, it is defined separately from the cus
 * create _01_LampshadeQuery.Contracts.ProductCategory.IProductCategoryQuery.GetProductCategoriesWithProducts in implement in _01_LampshadeQuery.Query.ProductCategoryQuery.GetProductCategoriesWithProducts
 * create ServiceHost/Pages/Shared/Components/ProductCategoryWithProduct/Default.cshtml
 * create ServiceHost.ViewComponents.ProductCategoryWithProductViewComponent
+* create LastsArrival View Component
