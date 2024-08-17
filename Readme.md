@@ -165,3 +165,12 @@ Since this type of discount always exists, it is defined separately from the cus
 * create InventoryManagement.Application.InventoryApplication. AddTransient in Inventory InventoryManagement.Infrastructure.Configuration.InventoryManagementBootstrapper.Configure
 * add inventory pages in ServiceHost
 * create OperationLog page
+----------------------------------------------------------------
+
+#### Project Ui
+
+* create _01_LampshadeQuery.Contracts.Product.ProductQueryModel add as list to ProductCategoryQueryModel
+* create _01_LampshadeQuery.Contracts.ProductCategory.IProductCategoryQuery.GetProductCategoriesWithProducts in implement in _01_LampshadeQuery.Query.ProductCategoryQuery.GetProductCategoriesWithProducts
+* create ServiceHost/Pages/Shared/Components/ProductCategoryWithProduct/Default.cshtml
+* create ServiceHost.ViewComponents.ProductCategoryWithProductViewComponent
+* create LastsArrival View Component
