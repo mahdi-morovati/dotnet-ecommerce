@@ -33,7 +33,7 @@ public class ProductCategoryRepository : RepositoryBase<long, ProductCategory>, 
             Name = x.Name,
             Keywords = x.Keywords,
             MetaDescription = x.MetaDescription,
-            Picture = x.Picture,
+            // Picture = x.Picture,
             PictureAlt = x.PictureAlt,
             PictureTitle = x.PictureTitle,
             Slug = x.Slug
