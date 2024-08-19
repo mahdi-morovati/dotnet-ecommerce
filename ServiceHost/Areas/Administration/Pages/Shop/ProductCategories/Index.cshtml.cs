@@ -1,3 +1,4 @@
+using _0_framework.Application;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -42,7 +43,12 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
 
         public JsonResult OnPostEdit(EditProductCategory command)
         {
-            // if (Mo 
+            if (!ModelState.IsValid)
+            {
+                // TODO: Handle error
+                // var operation = new OperationResult().Failed(ValidationMessages.InvalidFileFormat);
+                // return new JsonResult(operation);
+            } 
 
             var result = _productCategoryApplication.Edit(command);
             return new JsonResult(result);
