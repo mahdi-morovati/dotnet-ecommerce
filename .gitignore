@@ -5,3 +5,4 @@ riderModule.iml
 /_ReSharper.Caches/
 .idea
 ServiceHost/wwwroot/ProductPictures
+ServiceHost/wwwroot/slides

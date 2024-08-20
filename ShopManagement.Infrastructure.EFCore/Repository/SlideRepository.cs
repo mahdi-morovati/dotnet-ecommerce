@@ -21,7 +21,6 @@ public class SlideRepository : RepositoryBase<long, Slide>, ISlideRepository
             Id = id,
             BtnText = x.BtnText,
             Heading = x.Heading,
-            Picture = x.Picture,
             PictureTitle = x.PictureTitle,
             PictureAlt = x.PictureAlt,
             Title = x.Title,
