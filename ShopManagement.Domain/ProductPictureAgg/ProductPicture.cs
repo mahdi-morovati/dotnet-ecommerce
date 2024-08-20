@@ -25,7 +25,8 @@ public class ProductPicture : EntityBase
     {
         ProductId = productId;
         Picture = picture;
-        PictureAlt = pictureAlt;
+        if (!string.IsNullOrEmpty(picture))
+            PictureAlt = pictureAlt;
         PictureTitle = pictureTitle;
         IsRemoved = false;
     }

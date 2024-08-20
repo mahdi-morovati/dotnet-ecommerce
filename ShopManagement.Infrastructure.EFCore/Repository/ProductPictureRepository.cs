@@ -27,6 +27,14 @@ public class ProductPictureRepository : RepositoryBase<long, ProductPicture>, IP
             }).FirstOrDefault(x => x.Id == id);
     }
 
+    public ProductPicture GetWithProductAndCategory(long id)
+    {
+        return _context.ProductPictures
+            .Include(x => x.Product)
+            .ThenInclude(x => x.Category)
+            .FirstOrDefault(x => x.Id == id);
+    }
+
     public List<ProductPictureViewModel> Search(ProductPictureSearchModel searchModel)
     {
         var query = _context.ProductPictures.Include(x => x.Product).Select(x => new ProductPictureViewModel
@@ -34,6 +42,8 @@ public class ProductPictureRepository : RepositoryBase<long, ProductPicture>, IP
             Id = x.Id,
             Product = x.Product.Name,
             ProductId = x.Product.Id,
+            Picture = x.Picture,
+            IsRemoved = x.IsRemoved
         });
         if (searchModel.ProductId != 0)
         {
