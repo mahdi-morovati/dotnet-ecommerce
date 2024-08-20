@@ -15,6 +15,11 @@ public class ProductRepository : RepositoryBase<long, Product>, IProductReposito
         _context = context;
     }
 
+    public Product GetWithCategory(long id)
+    {
+        return _context.Products.Include(x => x.Category).FirstOrDefault(x => x.Id == id);
+    }
+
     public EditProduct GetDetails(long id)
     {
         return _context.Products.Select(x => new EditProduct
@@ -62,7 +67,7 @@ public class ProductRepository : RepositoryBase<long, Product>, IProductReposito
 
         return query.OrderByDescending(x => x.Id).ToList();
     }
-    
+
     public List<ProductViewModel> GetProducts()
     {
         return _context.Products.Select(x => new ProductViewModel

@@ -40,6 +40,11 @@ public class ProductCategoryRepository : RepositoryBase<long, ProductCategory>, 
         }).FirstOrDefault(x => x.Id == id);
     }
 
+    public string GetSlugById(long id)
+    {
+        return _context.ProductCategories.Select(x => new { x.Id, x.Slug }).FirstOrDefault(x => x.Id == id).Slug;
+    }
+
     public List<ProductCategoryViewModel> Search(ProductCategorySearchModel searchModel)
     {
         var query = _context.ProductCategories.Select(x => new ProductCategoryViewModel

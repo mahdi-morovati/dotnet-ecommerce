@@ -22,7 +22,7 @@ public class FileUploader : IFileUploader
         }
 
         var fileName = $"{DateTime.Now.ToFileName()}-{file.FileName}";
-        var filePath = $"{directoryPath}//{fileName}";
+        var filePath = $"{directoryPath}/{fileName}";
 
         using var output = System.IO.File.Create(filePath); // Create stream for path
         file.CopyTo(output);

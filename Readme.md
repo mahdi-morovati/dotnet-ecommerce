@@ -174,3 +174,14 @@ Since this type of discount always exists, it is defined separately from the cus
 * create ServiceHost/Pages/Shared/Components/ProductCategoryWithProduct/Default.cshtml
 * create ServiceHost.ViewComponents.ProductCategoryWithProductViewComponent
 * create LastsArrival View Component
+
+----------------------------------------------------------------
+#### File Upload
+
+* change input to File type in ServiceHost/Areas/Administration/Pages/Shop/Products/Create.cshtml, Edit.cshtml
+* change string to IFormFile type in ShopManagement.Application.Contracts.Product.CreateProduct.Picture
+* create _0_framework.Application.IFileUploader, ServiceHost.FileUploader
+* use FileUploader in ProductApplication
+* create _0_framework.Application.MaxFileSizeAttribute for file size validation
+* create _0_framework.Application.FileExtensionLimitationAttribute for file type 
+  * use these validations in ShopManagement.Application.Contracts.Product.CreateProduct.Picture

@@ -47,7 +47,7 @@ public class Product : EntityBase
         ShortDescription = shortDescription;
         Description = description;
 
-        if (!string.IsNullOrWhiteSpace(picture))
+        if (!string.IsNullOrWhiteSpace(picture)) // we update the picture when i upload file else it will not be changed
             Picture = picture;
 
         PictureAlt = pictureAlt;
