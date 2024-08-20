@@ -14,7 +14,7 @@ public class FileUploader : IFileUploader
     public string Upload(IFormFile file, string path)
     {
         if (file == null) return "";
-        var directoryPath = $"{_webHostEnvironment.WebRootPath}//ProductPictures//{path}";
+        var directoryPath = $"{_webHostEnvironment.WebRootPath}/ProductPictures/{path}";
 
         if (!Directory.Exists(directoryPath))
         {

@@ -52,8 +52,6 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
 
         public JsonResult OnPostEdit(EditProduct command)
         {
-            // if (Mo 
-
             var result = _productApplication.Edit(command);
             return new JsonResult(result);
         }

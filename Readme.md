@@ -194,3 +194,7 @@ Since this type of discount always exists, it is defined separately from the cus
       https://raw.githubusercontent.com/ssrsub/ssr/master/Clash.yml
 * use $.validator.unobtrusive.parse(newForm); beacuse form is not exists in dom and gets with ajax. ServiceHost/wwwroot/AdminTheme/assets/js/site.js:19
 * add validation attributes in commands (DTOs like CreateProduct, EditProduct, CreateProductCategory). 
+
+----------------------------------------------------------------
+### Product details page
+* create Razor Page /home/mahdi/RiderProjects/Lampshade/ServiceHost/Pages/Product.cshtml, Product.cshtml.cs
