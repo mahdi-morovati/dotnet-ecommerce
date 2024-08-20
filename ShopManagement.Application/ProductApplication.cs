@@ -53,7 +53,7 @@ public class ProductApplication : IProductApplication
         }
 
         var slug = command.Slug.Slugify();
-        var path = $"{product.Category.Slug}//{slug}";
+        var path = $"{product.Category.Slug}/{slug}";
         var picturePath = _fileUploader.Upload(command.Picture, path);
 
         product.Edit(command.Name, command.Code, command.ShortDescription, command.Description,
