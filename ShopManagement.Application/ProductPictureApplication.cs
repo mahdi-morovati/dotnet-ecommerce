@@ -42,6 +42,8 @@ public class ProductPictureApplication : IProductPictureApplication
 
         var path = $"{productPicture.Product.Category.Slug}/{productPicture.Product.Slug}";
         var picturePath = _fileUploader.Upload(command.Picture, path);
+        
+        // we can check getting picture from form with the database
 
         productPicture.Edit(command.ProductId, picturePath, command.PictureAlt, command.PictureTitle);
         _productPictureRepository.SaveChanges();
