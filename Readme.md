@@ -198,3 +198,12 @@ Since this type of discount always exists, it is defined separately from the cus
 ----------------------------------------------------------------
 ### Product details page
 * create Razor Page /home/mahdi/RiderProjects/Lampshade/ServiceHost/Pages/Product.cshtml, Product.cshtml.cs
+
+----------------------------------------------------------------
+
+## Authentication
+* create Solution folder AccountManagement
+* create Domain. create model AccountManagement.Domain.AccountAgg.Account, IAccountRepository
+* create DTOs AccountManagement.Application.Contracts.Account.RegisterAccount, IAccountApplication, ...
+* create AccountManagement.Domain.AccountAgg.IAccountRepository methods
+* 
