@@ -206,4 +206,7 @@ Since this type of discount always exists, it is defined separately from the cus
 * create Domain. create model AccountManagement.Domain.AccountAgg.Account, IAccountRepository
 * create DTOs AccountManagement.Application.Contracts.Account.RegisterAccount, IAccountApplication, ...
 * create AccountManagement.Domain.AccountAgg.IAccountRepository methods
-* 
+* create AccountManagement.Infrastructure.EFCore
+  * create AccountContext
+  * create AccountMapping
+  * create AccountRepository. (implement methods)
