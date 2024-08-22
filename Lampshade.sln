@@ -52,6 +52,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountManagement.Applicati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountManagement.Infrastructure.EFCore", "AccountManagement.Infrastructure.EFCore\AccountManagement.Infrastructure.EFCore.csproj", "{0A30903D-5B72-4ADA-83FF-8AAD4DCE9884}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountManagement.Configuration", "AccountManagement.Configuration\AccountManagement.Configuration.csproj", "{0E6A7BD7-BD42-44DF-8E3B-FC7F51FB96FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -146,6 +148,10 @@ Global
 		{0A30903D-5B72-4ADA-83FF-8AAD4DCE9884}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A30903D-5B72-4ADA-83FF-8AAD4DCE9884}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A30903D-5B72-4ADA-83FF-8AAD4DCE9884}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E6A7BD7-BD42-44DF-8E3B-FC7F51FB96FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E6A7BD7-BD42-44DF-8E3B-FC7F51FB96FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E6A7BD7-BD42-44DF-8E3B-FC7F51FB96FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E6A7BD7-BD42-44DF-8E3B-FC7F51FB96FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1E86478F-3F3F-4840-96D6-ABC3D97654F5} = {0149C220-9CB3-4D9F-88F9-A1D4BD2E6CA6}
@@ -167,5 +173,6 @@ Global
 		{7F5ED5FE-8C45-4C8C-BE91-600E915F3004} = {42F49072-16C9-4AD5-9A15-4DF160208845}
 		{78351870-8EC7-4B26-B028-9DBD64141754} = {42F49072-16C9-4AD5-9A15-4DF160208845}
 		{0A30903D-5B72-4ADA-83FF-8AAD4DCE9884} = {42F49072-16C9-4AD5-9A15-4DF160208845}
+		{0E6A7BD7-BD42-44DF-8E3B-FC7F51FB96FC} = {42F49072-16C9-4AD5-9A15-4DF160208845}
 	EndGlobalSection
 EndGlobal

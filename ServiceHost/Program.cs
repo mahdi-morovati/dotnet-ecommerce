@@ -1,4 +1,6 @@
 using _0_framework.Application;
+using _0_Framework.Application;
+using AccountManagement.Configuration;
 using DiscountManagement.Configuration;
 using InventoryManagement.Infrastructure.Configuration;
 using ServiceHost;
@@ -12,7 +14,9 @@ var connectionString = builder.Configuration.GetConnectionString("LampshadeDb");
 ShopManagementBootstrapper.Configure(builder.Services, connectionString);
 DiscountManagementBootstrapper.Configure(builder.Services, connectionString);
 InventoryManagementBootstrapper.Configure(builder.Services, connectionString);
+AccountManagementBootstrapper.Configure(builder.Services, connectionString);
 
+builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
 builder.Services.AddTransient<IFileUploader, FileUploader>();
 
 builder.Services.AddRazorPages();

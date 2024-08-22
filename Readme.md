@@ -212,3 +212,13 @@ Since this type of discount always exists, it is defined separately from the cus
   * create AccountContext
   * create AccountMapping
   * create AccountRepository. (implement methods)
+* create AccountManagement.Application.AccountApplication
+  * extend methods
+  * in ChangePassword method we must hash password
+  * add IPasswordHasher, PasswordHasher, HashingOptions methods (from other project)
+  * use PasswordHasher in AccountApplication.ChangePassword method
+  * wire up in builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
+  * create AccountManagement.Configuration.AccountManagementBootstrapper and register in Program.cs
+  * create migration
+  
+**wire up it is mean register in Program.cs (builder.Services.AddTransient)**
