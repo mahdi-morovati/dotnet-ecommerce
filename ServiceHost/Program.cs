@@ -9,6 +9,7 @@ using ShopManagement.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpContextAccessor();
 
 var connectionString = builder.Configuration.GetConnectionString("LampshadeDb");
 ShopManagementBootstrapper.Configure(builder.Services, connectionString);
@@ -18,6 +19,7 @@ AccountManagementBootstrapper.Configure(builder.Services, connectionString);
 
 builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
 builder.Services.AddTransient<IFileUploader, FileUploader>();
+builder.Services.AddTransient<IAuthHelper, AuthHelper>();
 
 builder.Services.AddRazorPages();
 

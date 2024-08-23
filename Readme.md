@@ -221,5 +221,9 @@ Since this type of discount always exists, it is defined separately from the cus
   * create AccountManagement.Configuration.AccountManagementBootstrapper and register in Program.cs
   * create migrations (Account, Role)
   * create pages (ServiceHost/Areas/Administration/Pages/Accounts/Account)
+* create IAuthHelper (create it in _0_framework.Application because we want to use it always)
+* create _0_framework.Application.AuthHelper
+* add builder.Services.AddHttpContextAccessor(); in Program.cs to access _0_framework.Application.AuthHelper._contextAccessor (IHttpContextAccessor)
+* register in Program.cs builder.Services.AddTransient<IAuthHelper, AuthHelper>();
   
 **wire up it is mean register in Program.cs (builder.Services.AddTransient)**

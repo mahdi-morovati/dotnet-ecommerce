@@ -10,14 +10,15 @@ public class AccountApplication : IAccountApplication
         private readonly IFileUploader _fileUploader;
         private readonly IPasswordHasher _passwordHasher;
         private readonly IAccountRepository _accountRepository;
-        // private readonly IAuthHelper _authHelper;
+        private readonly IAuthHelper _authHelper;
         private readonly IRoleRepository _roleRepository;
 
         public AccountApplication(IAccountRepository accountRepository, IPasswordHasher passwordHasher,
-            IFileUploader fileUploader, IRoleRepository roleRepository)
+            IFileUploader fileUploader, IRoleRepository roleRepository, IAuthHelper authHelper)
         {
             // _authHelper = authHelper;
             _roleRepository = roleRepository;
+            _authHelper = authHelper;
             _fileUploader = fileUploader;
             _passwordHasher = passwordHasher;
             _accountRepository = accountRepository;
@@ -105,10 +106,10 @@ public class AccountApplication : IAccountApplication
                 .Select(x => x.Code)
                 .ToList();
 
-            // var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.Fullname
-            //     , account.Username, account.Mobile, permissions);
-            //
-            // _authHelper.Signin(authViewModel);
+            var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.Fullname
+                , account.Username, account.Mobile, permissions);
+            
+            _authHelper.Signin(authViewModel);
             return operation.Succedded();
         }
 
