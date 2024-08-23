@@ -3,6 +3,7 @@
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using AccountManagement.Application.Contracts.Role;
 
 namespace AccountManagement.Application.Contracts.Account
 {
@@ -23,6 +24,6 @@ namespace AccountManagement.Application.Contracts.Account
         public long RoleId { get; set; }
 
         public IFormFile ProfilePhoto { get; set; }
-        // public List<RoleViewModel> Roles { get; set; }
+        public List<RoleViewModel> Roles { get; set; }
     }
 }

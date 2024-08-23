@@ -1,7 +1,8 @@
-using System.Linq.Expressions;
+using _0_framework.Application;
 using _0_framework.Infrastructure;
 using AccountManagement.Application.Contracts.Account;
 using AccountManagement.Domain.AccountAgg;
+using Microsoft.EntityFrameworkCore;
 
 namespace AccountManagement.Infrastructure.EFCore.Repository;
 
@@ -14,34 +15,9 @@ public class AccountRepository : RepositoryBase<long, Account>, IAccountReposito
         _context = context;
     }
 
-    public Account Get(long id)
-    {
-        return _context.Accounts.FirstOrDefault(a => a.Id == id);
-    }
-
-    public List<Account> Get()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Create(Account entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void SaveChanges()
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool Exists(Expression<Func<Account, bool>> expression)
-    {
-        throw new NotImplementedException();
-    }
-
     public Account GetBy(string username)
     {
-        throw new NotImplementedException();
+        return _context.Accounts.FirstOrDefault(x => x.Username == username);
     }
 
     public EditAccount GetDetails(long id)
@@ -52,29 +28,38 @@ public class AccountRepository : RepositoryBase<long, Account>, IAccountReposito
             Fullname = x.Fullname,
             Mobile = x.Mobile,
             RoleId = x.RoleId,
-            Username = x.Username,
+            Username = x.Username
         }).FirstOrDefault(x => x.Id == id);
     }
 
     public List<AccountViewModel> GetAccounts()
     {
-        throw new NotImplementedException();
+        return _context.Accounts.Select(x => new AccountViewModel
+        {
+            Id = x.Id,
+            Fullname = x.Fullname
+        }).ToList();
     }
 
     public List<AccountViewModel> Search(AccountSearchModel searchModel)
     {
-        var query = _context.Accounts.Select(x => new AccountViewModel
+        var query = _context.Accounts.Include(x => x.Role).Select(x => new AccountViewModel
         {
             Id = x.Id,
             Fullname = x.Fullname,
             Mobile = x.Mobile,
-            Role = "system administrator",
-            RoleId = 2,
+            ProfilePhoto = x.ProfilePhoto,
+            Role = x.Role.Name,
+            RoleId = x.RoleId,
             Username = x.Username,
+            CreationDate = x.CreationDate.ToFarsi()
         });
 
         if (!string.IsNullOrWhiteSpace(searchModel.Fullname))
             query = query.Where(x => x.Fullname.Contains(searchModel.Fullname));
+
+        if (!string.IsNullOrWhiteSpace(searchModel.Username))
+            query = query.Where(x => x.Username.Contains(searchModel.Username));
 
         if (!string.IsNullOrWhiteSpace(searchModel.Mobile))
             query = query.Where(x => x.Mobile.Contains(searchModel.Mobile));

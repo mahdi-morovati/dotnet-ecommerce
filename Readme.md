@@ -219,6 +219,7 @@ Since this type of discount always exists, it is defined separately from the cus
   * use PasswordHasher in AccountApplication.ChangePassword method
   * wire up in builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
   * create AccountManagement.Configuration.AccountManagementBootstrapper and register in Program.cs
-  * create migration
+  * create migrations (Account, Role)
+  * create pages (ServiceHost/Areas/Administration/Pages/Accounts/Account)
   
 **wire up it is mean register in Program.cs (builder.Services.AddTransient)**
