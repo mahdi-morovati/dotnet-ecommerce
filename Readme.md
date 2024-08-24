@@ -197,4 +197,49 @@ Since this type of discount always exists, it is defined separately from the cus
 
 ----------------------------------------------------------------
 ### Product details page
+
 * create Razor Page /home/mahdi/RiderProjects/Lampshade/ServiceHost/Pages/Product.cshtml, Product.cshtml.cs
+
+----------------------------------------------------------------
+
+## Authentication
+
+* create Solution folder AccountManagement
+* create Domain. create model AccountManagement.Domain.AccountAgg.Account, IAccountRepository
+* create DTOs AccountManagement.Application.Contracts.Account.RegisterAccount, IAccountApplication, ...
+* create AccountManagement.Domain.AccountAgg.IAccountRepository methods
+* create AccountManagement.Infrastructure.EFCore
+  * create AccountContext
+  * create AccountMapping
+  * create AccountRepository. (implement methods)
+* create AccountManagement.Application.AccountApplication
+  * extend methods
+  * in ChangePassword method we must hash password
+  * add IPasswordHasher, PasswordHasher, HashingOptions methods (from other project)
+  * use PasswordHasher in AccountApplication.ChangePassword method
+  * wire up in builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
+    **wire up it is mean register in Program.cs (builder.Services.AddTransient)**
+  * create AccountManagement.Configuration.AccountManagementBootstrapper and register in Program.cs
+  * create migrations (Account, Role)
+  * create pages (ServiceHost/Areas/Administration/Pages/Accounts/Account)
+* create IAuthHelper (create it in _0_framework.Application because we want to use it always)
+* create _0_framework.Application.AuthHelper
+* add builder.Services.AddHttpContextAccessor(); in Program.cs to access _0_framework.Application.AuthHelper._contextAccessor (IHttpContextAccessor)
+* register in Program.cs builder.Services.AddTransient<IAuthHelper, AuthHelper>();
+* we must tell to app apply authentication check. add this code in Program.cs
+
+
+    options.CheckConsentNeeded = context => true;
+    options.MinimumSameSitePolicy = SameSiteMode.Strict;
+    });
+    builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o =>
+    {
+    o.LoginPath = new PathString("/Account");
+    o.LogoutPath = new PathString("/Account");
+    o.AccessDeniedPath = new PathString("/AccessDenied");
+    });
+  
+* register app.UseAuthentication();, app.UseCookiePolicy(); in Program.cs. (if app.UseAuthorization(); is not exists we should add it)
+* 
+
