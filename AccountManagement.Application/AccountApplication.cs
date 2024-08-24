@@ -115,7 +115,7 @@ public class AccountApplication : IAccountApplication
 
         public void Logout()
         {
-            // _authHelper.SignOut();
+            _authHelper.SignOut();
         }
 
         public List<AccountViewModel> GetAccounts()
