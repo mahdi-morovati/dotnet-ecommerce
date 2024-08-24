@@ -218,6 +218,7 @@ Since this type of discount always exists, it is defined separately from the cus
   * add IPasswordHasher, PasswordHasher, HashingOptions methods (from other project)
   * use PasswordHasher in AccountApplication.ChangePassword method
   * wire up in builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
+    **wire up it is mean register in Program.cs (builder.Services.AddTransient)**
   * create AccountManagement.Configuration.AccountManagementBootstrapper and register in Program.cs
   * create migrations (Account, Role)
   * create pages (ServiceHost/Areas/Administration/Pages/Accounts/Account)
@@ -225,5 +226,20 @@ Since this type of discount always exists, it is defined separately from the cus
 * create _0_framework.Application.AuthHelper
 * add builder.Services.AddHttpContextAccessor(); in Program.cs to access _0_framework.Application.AuthHelper._contextAccessor (IHttpContextAccessor)
 * register in Program.cs builder.Services.AddTransient<IAuthHelper, AuthHelper>();
+* we must tell to app apply authentication check. add this code in Program.cs
+
+
+    options.CheckConsentNeeded = context => true;
+    options.MinimumSameSitePolicy = SameSiteMode.Strict;
+    });
+    builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o =>
+    {
+    o.LoginPath = new PathString("/Account");
+    o.LogoutPath = new PathString("/Account");
+    o.AccessDeniedPath = new PathString("/AccessDenied");
+    });
   
-**wire up it is mean register in Program.cs (builder.Services.AddTransient)**
+* register app.UseAuthentication();, app.UseCookiePolicy(); in Program.cs. (if app.UseAuthorization(); is not exists we should add it)
+* 
+
