@@ -16,7 +16,6 @@ public class AccountApplication : IAccountApplication
         public AccountApplication(IAccountRepository accountRepository, IPasswordHasher passwordHasher,
             IFileUploader fileUploader, IRoleRepository roleRepository, IAuthHelper authHelper)
         {
-            // _authHelper = authHelper;
             _roleRepository = roleRepository;
             _authHelper = authHelper;
             _fileUploader = fileUploader;
