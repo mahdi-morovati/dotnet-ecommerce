@@ -3,6 +3,7 @@ using _0_framework.Infrastructure;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace _0_framework.Application;
 
@@ -32,13 +33,12 @@ public class AuthHelper : IAuthHelper
 
         public List<int> GetPermissions()
         {
-            return new List<int>();
             if (!IsAuthenticated())
                 return new List<int>();
 
-            // var permissions = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "permissions")
-            //     ?.Value;
-            // return JsonConvert.DeserializeObject<List<int>>(permissions);
+            var permissions = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "permissions")
+                ?.Value;
+            return JsonConvert.DeserializeObject<List<int>>(permissions);
         }
 
         public long CurrentAccountId()
@@ -79,14 +79,14 @@ public class AuthHelper : IAuthHelper
         /// <param name="account"></param>
         public void Signin(AuthViewModel account)
         {
-            // var permissions = JsonConvert.SerializeObject(account.Permissions);
+            var permissions = JsonConvert.SerializeObject(account.Permissions);
             var claims = new List<Claim>
             {
                 new Claim("AccountId", account.Id.ToString()),
                 new Claim(ClaimTypes.Name, account.Fullname),
                 new Claim(ClaimTypes.Role, account.RoleId.ToString()),
                 new Claim("Username", account.Username), // Or Use ClaimTypes.NameIdentifier
-                // new Claim("permissions", permissions),
+                new Claim("permissions", permissions),
                 new Claim("Mobile", account.Mobile)
             };
 

@@ -241,5 +241,6 @@ Since this type of discount always exists, it is defined separately from the cus
     });
   
 * register app.UseAuthentication();, app.UseCookiePolicy(); in Program.cs. (if app.UseAuthorization(); is not exists we should add it)
-* 
+* use IPageFilter. (create ServiceHost.SecurityPageFilter)
+**in generic itself get instance from the class**
 
