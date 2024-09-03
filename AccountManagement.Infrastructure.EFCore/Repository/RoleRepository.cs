@@ -2,10 +2,10 @@
 using AccountManagement.Domain.RoleAgg;
 using _0_framework.Application;
 using _0_framework.Infrastructure;
-using AccountManagement.Infrastructure.EFCore;
+using _0_Framework.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
-namespace AccountMangement.Infrastructure.EFCore.Repository
+namespace AccountManagement.Infrastructure.EFCore.Repository
 {
     public class RoleRepository : RepositoryBase<long, Role>, IRoleRepository
     {
@@ -22,19 +22,19 @@ namespace AccountMangement.Infrastructure.EFCore.Repository
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    // MappedPermissions = MapPermissions(x.Permissions)
+                    MappedPermissions = MapPermissions(x.Permissions)
                 }).AsNoTracking()
                 .FirstOrDefault(x => x.Id == id);
 
-            // role.Permissions = role.MappedPermissions.Select(x => x.Code).ToList();
+            role.Permissions = role.MappedPermissions.Select(x => x.Code).ToList();
 
             return role;
         }
 
-        // private static List<PermissionDto> MapPermissions(IEnumerable<Permission> permissions)
-        // {
-        //     return permissions.Select(x => new PermissionDto(x.Code, x.Name)).ToList();
-        // }
+        private static List<PermissionDto> MapPermissions(IEnumerable<Permission> permissions)
+        {
+            return permissions.Select(x => new PermissionDto(x.Code, x.Name)).ToList();
+        }
 
         public List<RoleViewModel> List()
         {
