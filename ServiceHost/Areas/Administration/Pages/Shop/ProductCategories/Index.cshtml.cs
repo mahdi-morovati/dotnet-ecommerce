@@ -6,7 +6,7 @@ using ShopManagement.Application.Contracts.ProductCategory;
 
 namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
 {
-    //[Authorize(Roles = "1, 3")]
+    [Authorize(Roles = "1, 3")]
     public class IndexModel : PageModel
     {
         public ProductCategorySearchModel SearchModel;

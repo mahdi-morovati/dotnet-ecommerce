@@ -1,5 +1,6 @@
 using _0_framework.Application;
 using _0_Framework.Application;
+using _0_framework.Infrastructure;
 using AccountManagement.Configuration;
 using DiscountManagement.Configuration;
 using InventoryManagement.Infrastructure.Configuration;
@@ -35,7 +36,27 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         o.AccessDeniedPath = new PathString("/AccessDenied");
     });
 
-builder.Services.AddRazorPages();
+builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("AdminArea",
+            builder => builder.RequireRole(new List<string> { Roles.Administrator, Roles.ContentUploader }));
+        options.AddPolicy("Shop",
+            builder => builder.RequireRole(new List<string> { Roles.Administrator }));
+        options.AddPolicy("Discount",
+            builder => builder.RequireRole(new List<string> { Roles.Administrator }));
+        options.AddPolicy("Account",
+            builder => builder.RequireRole(new List<string> { Roles.Administrator }));
+    }
+);
+
+builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
+    {
+        options.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminArea");
+        options.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "Shop");
+        options.Conventions.AuthorizeAreaFolder("Administration", "/Discounts", "Discount");
+        options.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
+    }
+    );
 
 var app = builder.Build();
 

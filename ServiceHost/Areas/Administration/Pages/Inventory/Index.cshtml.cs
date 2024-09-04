@@ -1,4 +1,6 @@
+using _0_framework.Infrastructure;
 using InventoryManagement.Application.Contract.Inventory;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -6,6 +8,7 @@ using ShopManagement.Application.Contracts.Product;
 
 namespace ServiceHost.Areas.Administration.Pages.Inventory
 {
+    [Authorize(Roles = Roles.Administrator)]
     public class IndexModel : PageModel
     {
         [TempData] public string Message { get; set; }
@@ -85,7 +88,7 @@ namespace ServiceHost.Areas.Administration.Pages.Inventory
             var result = _inventoryApplication.Reduce(command);
             return new JsonResult(result);
         }
-        
+
         public IActionResult OnGetLog(long id)
         {
             var log = _inventoryApplication.GetOperationLog(id);
