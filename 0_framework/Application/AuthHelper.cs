@@ -33,13 +33,12 @@ public class AuthHelper : IAuthHelper
 
         public List<int> GetPermissions()
         {
-            return new List<int>();
             if (!IsAuthenticated())
                 return new List<int>();
 
-            // var permissions = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "permissions")
-            //     ?.Value;
-            // return JsonConvert.DeserializeObject<List<int>>(permissions);
+            var permissions = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Permissions")
+                ?.Value;
+            return JsonConvert.DeserializeObject<List<int>>(permissions);
         }
 
         public long CurrentAccountId()
