@@ -22,19 +22,19 @@ namespace AccountMangement.Infrastructure.EFCore.Repository
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    // MappedPermissions = MapPermissions(x.Permissions)
+                    MappedPermissions = MapPermissions(x.Permissions)
                 }).AsNoTracking()
                 .FirstOrDefault(x => x.Id == id);
 
-            // role.Permissions = role.MappedPermissions.Select(x => x.Code).ToList();
+            role.Permissions = role.MappedPermissions.Select(x => x.Code).ToList();
 
             return role;
         }
 
-        // private static List<PermissionDto> MapPermissions(IEnumerable<Permission> permissions)
-        // {
-        //     return permissions.Select(x => new PermissionDto(x.Code, x.Name)).ToList();
-        // }
+        private static List<PermissionDto> MapPermissions(IEnumerable<Permission> permissions)
+        {
+            return permissions.Select(x => new PermissionDto(x.Code, x.Name)).ToList();
+        }
 
         public List<RoleViewModel> List()
         {
