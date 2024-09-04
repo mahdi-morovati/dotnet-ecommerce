@@ -32,7 +32,7 @@ var currentAccout = AuthHelper.CurrentAccountInfo();
                 <li>
                     <a asp-page="/Comments/Index" class="waves-effect"><i class="md md-home"></i><span> کامنت ها </span></a>
                 </li>
-                @if (AuthHelper.CurrentAccountRole() == Roles.Administrator)
+                @if (AuthHelper.CurrentAccountRole() == Roles.Administrator || AuthHelper.CurrentAccountRole() == Roles.ContentUploader)
                 {
 
                 <li>
