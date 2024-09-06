@@ -1,7 +1,8 @@
+using _01_LampshadeQuery.Contracts.Product;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Nancy.Json;
-using ShopManagement.Configuration.Order;
+using ShopManagement.Application.Contracts.Order;
 
 namespace ServiceHost.Pages;
 
@@ -9,18 +10,23 @@ public class CartModel : PageModel
 {
     public List<CartItem> CartItems;
     public const string CookieName = "cart-items";
+    private readonly IProductQuery _productQuery;
+
+    public CartModel(IProductQuery productQuery)
+    {
+        CartItems = new List<CartItem>();
+        _productQuery = productQuery;
+    }
 
     public void OnGet()
     {
         var serializer = new JavaScriptSerializer();
         var value = Request.Cookies[CookieName];
-        CartItems = serializer
-            .Deserialize<List<CartItem>>(value); // convert value to List<CartItem> (list of cart items)
+        var cartItems = serializer.Deserialize<List<CartItem>>(value);// convert value to List<CartItem> (list of cart items)
+        foreach (var item in cartItems)
+            item.CalculateTotalItemPrice();
 
-        foreach (var cartItem in CartItems)
-        {
-            cartItem.TotalItemPrice = cartItem.UnitPrice * cartItem.Count;
-        }
+        CartItems = _productQuery.CheckInventoryStatus(cartItems);
     }
 
     public IActionResult OnGetRemoveFromCart(long id)
@@ -35,4 +41,24 @@ public class CartModel : PageModel
         Response.Cookies.Append(CookieName, serializer.Serialize(cartItems), options);
         return RedirectToPage("/Cart");
     }
+    
+    public IActionResult OnGetGoToCheckOut()
+    {
+        var serializer = new JavaScriptSerializer();
+        var value = Request.Cookies[CookieName];
+        var cartItems = serializer.Deserialize<List<CartItem>>(value);
+        foreach (var item in cartItems)
+        {
+            item.TotalItemPrice = item.UnitPrice * item.Count;
+        }
+
+        CartItems = _productQuery.CheckInventoryStatus(cartItems);
+
+        //if (CartItems.Any(x => !x.IsInStock))
+        //    return RedirectToPage("/Cart");
+        //return RedirectToPage("/Checkout");
+
+        return RedirectToPage(CartItems.Any(x => !x.IsInStock) ? "/Cart" : "/Checkout");
+    }
+    
 }

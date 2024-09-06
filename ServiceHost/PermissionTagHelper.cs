@@ -23,7 +23,7 @@ public class PermissionTagHelper : TagHelper
         }
 
         var permissions = _authHelper.GetPermissions();
-        if (!permissions.All(x => x == Permission))
+        if (permissions.All(x => x != Permission))
         {
             output.SuppressOutput();
             return;
