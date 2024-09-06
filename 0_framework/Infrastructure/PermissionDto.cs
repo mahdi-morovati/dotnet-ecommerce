@@ -1,14 +1,13 @@
-﻿namespace _0_Framework.Infrastructure
-{
-    public class PermissionDto
-    {
-        public int Code { get; set; }
-        public string Name { get; set; }
+namespace _0_framework.Infrastructure;
 
-        public PermissionDto(int code, string name)
-        {
-            Code = code;
-            Name = name;
-        }
+public class PermissionDto
+{
+    public int Code { get; set; }
+    public string Name { get; set; }
+
+    public PermissionDto(int code, string name)
+    {
+        Code = code;
+        Name = name;
     }
 }

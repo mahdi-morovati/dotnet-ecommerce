@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using _0_Framework.Infrastructure;
+
+using _0_framework.Infrastructure;
 
 namespace InventoryManagement.Infrastructure.Configuration.Permissions
 {

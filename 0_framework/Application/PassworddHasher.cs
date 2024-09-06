@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using _0_framework.Application;
 using Microsoft.Extensions.Options;
 
-namespace _0_Framework.Application;
+namespace _0_framework.Application;
 
 public class PasswordHasher : IPasswordHasher
 {

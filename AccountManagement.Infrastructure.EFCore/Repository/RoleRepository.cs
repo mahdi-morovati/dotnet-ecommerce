@@ -2,7 +2,6 @@
 using AccountManagement.Domain.RoleAgg;
 using _0_framework.Application;
 using _0_framework.Infrastructure;
-using _0_Framework.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace AccountManagement.Infrastructure.EFCore.Repository

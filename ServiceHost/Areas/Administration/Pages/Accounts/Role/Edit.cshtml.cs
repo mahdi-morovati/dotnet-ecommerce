@@ -1,4 +1,4 @@
-using _0_Framework.Infrastructure;
+using _0_framework.Infrastructure;
 using AccountManagement.Application.Contracts.Role;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

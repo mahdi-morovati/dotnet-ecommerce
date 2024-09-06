@@ -1,4 +1,4 @@
-using _0_Framework.Infrastructure;
+using _0_framework.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

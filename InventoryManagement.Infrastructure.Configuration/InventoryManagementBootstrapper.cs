@@ -1,4 +1,4 @@
-﻿using _0_Framework.Infrastructure;
+using _0_framework.Infrastructure;
 using InventoryManagement.Application;
 using InventoryManagement.Application.Contract.Inventory;
 using InventoryManagement.Domain.InventoryAgg;
@@ -16,9 +16,8 @@ public class InventoryManagementBootstrapper
     {
         services.AddTransient<IInventoryRepository, InventoryRepository>();
         services.AddTransient<IInventoryApplication, InventoryApplication>();
-        
-        services.AddTransient<IPermissionExposer, InventoryPermissionExposer>();
 
+        services.AddTransient<IPermissionExposer, InventoryPermissionExposer>();
         services.AddDbContext<InventoryContext>(x => x.UseSqlServer(connectionString));
     }
 }

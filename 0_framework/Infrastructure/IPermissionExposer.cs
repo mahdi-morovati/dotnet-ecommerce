@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
-namespace _0_Framework.Infrastructure
+namespace _0_framework.Infrastructure
 {
     public interface IPermissionExposer
     {

@@ -1,7 +1,6 @@
 using System.Reflection;
 using _0_framework.Application;
 using _0_framework.Infrastructure;
-using _0_Framework.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace ServiceHost;
@@ -22,7 +21,7 @@ public class SecurityPageFilter : IPageFilter
     public void OnPageHandlerExecuting(PageHandlerExecutingContext context)
     {
         var handlerPermission =
-            (NeedsPermissionAttribute)context.HandlerMethod.MethodInfo.GetCustomAttribute(
+            (NeedsPermissionAttribute) context.HandlerMethod?.MethodInfo.GetCustomAttribute(
                 typeof(NeedsPermissionAttribute));
 
         if (handlerPermission == null)

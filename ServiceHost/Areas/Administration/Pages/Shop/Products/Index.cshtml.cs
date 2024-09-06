@@ -1,5 +1,4 @@
 using _0_framework.Infrastructure;
-using _0_Framework.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -19,8 +18,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
         private readonly IProductApplication _productApplication;
         private readonly IProductCategoryApplication _productCategoryApplication;
 
-        public IndexModel(IProductApplication productApplication,
-            IProductCategoryApplication productCategoryApplication)
+        public IndexModel(IProductApplication productApplication, IProductCategoryApplication productCategoryApplication)
         {
             _productApplication = productApplication;
             _productCategoryApplication = productCategoryApplication;

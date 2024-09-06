@@ -1,4 +1,4 @@
-﻿namespace InventoryManagement.Infrastructure.Configuration.Permissions
+namespace InventoryManagement.Infrastructure.Configuration.Permissions
 {
     public static class InventoryPermissions
     {

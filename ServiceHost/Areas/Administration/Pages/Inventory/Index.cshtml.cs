@@ -1,4 +1,4 @@
-using _0_Framework.Infrastructure;
+using _0_framework.Infrastructure;
 using InventoryManagement.Application.Contract.Inventory;
 using InventoryManagement.Infrastructure.Configuration.Permissions;
 using Microsoft.AspNetCore.Mvc;

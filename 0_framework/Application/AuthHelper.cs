@@ -36,7 +36,7 @@ public class AuthHelper : IAuthHelper
             if (!IsAuthenticated())
                 return new List<int>();
 
-            var permissions = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "permissions")
+            var permissions = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Permissions")
                 ?.Value;
             return JsonConvert.DeserializeObject<List<int>>(permissions);
         }
@@ -86,7 +86,7 @@ public class AuthHelper : IAuthHelper
                 new Claim(ClaimTypes.Name, account.Fullname),
                 new Claim(ClaimTypes.Role, account.RoleId.ToString()),
                 new Claim("Username", account.Username), // Or Use ClaimTypes.NameIdentifier
-                new Claim("permissions", permissions),
+                new Claim("Permissions", permissions),
                 new Claim("Mobile", account.Mobile)
             };
 

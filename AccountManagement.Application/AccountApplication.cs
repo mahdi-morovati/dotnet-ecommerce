@@ -105,8 +105,7 @@ public class AccountApplication : IAccountApplication
                 .Select(x => x.Code)
                 .ToList();
 
-            var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.Fullname
-                , account.Username, account.Mobile, permissions);
+            var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.Fullname, account.Username, account.Mobile, permissions);
             
             _authHelper.Signin(authViewModel);
             return operation.Succedded();

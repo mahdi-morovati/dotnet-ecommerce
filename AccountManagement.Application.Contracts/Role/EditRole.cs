@@ -1,4 +1,4 @@
-﻿using _0_Framework.Infrastructure;
+using _0_framework.Infrastructure;
 
 namespace AccountManagement.Application.Contracts.Role
 {

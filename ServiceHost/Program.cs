@@ -1,5 +1,4 @@
 using _0_framework.Application;
-using _0_Framework.Application;
 using _0_framework.Infrastructure;
 using AccountManagement.Configuration;
 using DiscountManagement.Configuration;
@@ -37,16 +36,17 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 
 builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("AdminArea",
-        builder => builder.RequireRole(new List<string> { Roles.Administrator, Roles.Operator }));
-    options.AddPolicy("Shop",
-        builder => builder.RequireRole(new List<string> { Roles.Administrator }));
-    options.AddPolicy("Discount",
-        builder => builder.RequireRole(new List<string> { Roles.Administrator }));
-    options.AddPolicy("Account",
-        builder => builder.RequireRole(new List<string> { Roles.Administrator }));
-});
+    {
+        options.AddPolicy("AdminArea",
+            builder => builder.RequireRole(new List<string> { Roles.Administrator, Roles.ContentUploader }));
+        options.AddPolicy("Shop",
+            builder => builder.RequireRole(new List<string> { Roles.Administrator }));
+        options.AddPolicy("Discount",
+            builder => builder.RequireRole(new List<string> { Roles.Administrator }));
+        options.AddPolicy("Account",
+            builder => builder.RequireRole(new List<string> { Roles.Administrator }));
+    }
+);
 
 builder.Services.AddRazorPages()
     .AddMvcOptions(options => options.Filters.Add<SecurityPageFilter>())
@@ -56,7 +56,8 @@ builder.Services.AddRazorPages()
         options.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "Shop");
         options.Conventions.AuthorizeAreaFolder("Administration", "/Discounts", "Discount");
         options.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
-    });
+    }
+    );
 
 var app = builder.Build();
 
