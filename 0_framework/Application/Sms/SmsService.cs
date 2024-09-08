@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using SmsIrRestful;
 
-namespace _0_Framework.Application.Sms
+namespace _0_framework.Application.Sms
 {
     public class SmsService : ISmsService
     {
