@@ -25,7 +25,7 @@ public class ZarinPalFactory : IZarinPalFactory
         var siteUrl = _configuration.GetSection("payment")["siteUrl"];
 
         var client = new RestClient($"https://{Prefix}.zarinpal.com");
-        var request = new RestRequest("/pg/rest/WebGate/PaymentRequest.json", Method.Post);
+        var request = new RestRequest("/pg/rest/ZarinGate/PaymentRequest.json", Method.Post);
         request.AddHeader("Content-Type", "application/json");
 
         var body = new PaymentRequest
@@ -54,7 +54,7 @@ public class ZarinPalFactory : IZarinPalFactory
     public VerificationResponse CreateVerificationRequest(string authority, string amount)
     {
         var client = new RestClient($"https://{Prefix}.zarinpal.com");
-        var request = new RestRequest("/pg/rest/WebGate/PaymentVerification.json", Method.Post);
+        var request = new RestRequest("/pg/rest/ZarinGate/PaymentVerification.json", Method.Post);
         request.AddHeader("Content-Type", "application/json");
 
         amount = amount.Replace(",", "");
