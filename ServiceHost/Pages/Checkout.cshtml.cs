@@ -19,7 +19,6 @@ namespace ServiceHost.Pages
     {
         public Cart Cart;
         public const string CookieName = "cart-items";
-        private readonly IAuthHelper _authHelper;
         private readonly ICartService _cartService;
         private readonly IProductQuery _productQuery;
         private readonly IZarinPalFactory _zarinPalFactory;
@@ -34,7 +33,6 @@ namespace ServiceHost.Pages
             _cartService = cartService;
             _productQuery = productQuery;
             _orderApplication = orderApplication;
-            _authHelper = authHelper;
             _zarinPalFactory = zarinPalFactory;
         }
         
