@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 using RestSharp;
+using Newtonsoft.Json;
 
 namespace _0_framework.Application.ZarinPal;
 
@@ -18,16 +18,16 @@ public class ZarinPalFactory : IZarinPalFactory
         MerchantId = _configuration.GetSection("payment")["merchant"];
     }
 
-    public PaymentResponse CreatePaymentRequest(string amount, string mobile, string email, string description,
-        long orderId)
+    public PaymentResponse CreatePaymentRequest(string amount, string mobile, string email, string description, long orderId)
     {
         amount = amount.Replace(",", "");
         var finalAmount = int.Parse(amount);
         var siteUrl = _configuration.GetSection("payment")["siteUrl"];
 
-        var client = new RestClient($"https://{Prefix}.zarinpal.com/");
-        var request = new RestRequest("pg/rest/WebGate/PaymentRequest.json", Method.Post);
+        var client = new RestClient($"https://{Prefix}.zarinpal.com");
+        var request = new RestRequest("/pg/rest/WebGate/PaymentRequest.json", Method.Post);
         request.AddHeader("Content-Type", "application/json");
+
         var body = new PaymentRequest
         {
             Mobile = mobile,
@@ -37,30 +37,24 @@ public class ZarinPalFactory : IZarinPalFactory
             Amount = finalAmount,
             MerchantID = MerchantId
         };
-        request.AddJsonBody(body);
-        var response = client.Execute(request);
-        
-        Console.WriteLine("Request Body: " + JsonConvert.SerializeObject(body));
-        Console.WriteLine("Response Content: " + response.Content);
 
-        // var jsonSerializer = new JsonSerializer();
-        if (response.IsSuccessful)
+        request.AddJsonBody(body);
+
+        var response = client.Execute(request);
+
+        // بررسی موفقیت آمیز بودن درخواست
+        if (response.IsSuccessful && response.Content != null)
         {
-            var paymentResponse = JsonConvert.DeserializeObject<PaymentResponse>(response.Content);
-            return paymentResponse;
+            return JsonConvert.DeserializeObject<PaymentResponse>(response.Content);
         }
 
         return null;
-        
-        // return jsonSerializer.Deserialize<PaymentResponse>(response);
     }
 
     public VerificationResponse CreateVerificationRequest(string authority, string amount)
     {
-        var client = new RestClient($"https://{Prefix}.zarinpal.com/");
-        var request = new RestRequest("pg/rest/WebGate/PaymentVerification.json", Method.Post);
-        
-        
+        var client = new RestClient($"https://{Prefix}.zarinpal.com");
+        var request = new RestRequest("/pg/rest/WebGate/PaymentVerification.json", Method.Post);
         request.AddHeader("Content-Type", "application/json");
 
         amount = amount.Replace(",", "");
@@ -72,15 +66,15 @@ public class ZarinPalFactory : IZarinPalFactory
             MerchantID = MerchantId,
             Authority = authority
         });
+
         var response = client.Execute(request);
 
-        if (response.IsSuccessful)
+        // بررسی موفقیت آمیز بودن درخواست
+        if (response.IsSuccessful && response.Content != null)
         {
-            var verificationResponse = JsonConvert.DeserializeObject<VerificationResponse>(response.Content);
-            return verificationResponse;
+            return JsonConvert.DeserializeObject<VerificationResponse>(response.Content);
         }
 
         return null;
-
     }
 }

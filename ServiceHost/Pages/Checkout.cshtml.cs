@@ -69,12 +69,12 @@ namespace ServiceHost.Pages
                     cart.PayAmount.ToString(CultureInfo.InvariantCulture), "", "",
                     "خرید از درگاه لوازم خانگی و دکوری", orderId);
                 
-                if (paymentResponse == null || string.IsNullOrEmpty(paymentResponse.Authority))
+                if (paymentResponse == null)
                     return RedirectToPage("/Checkout",
                         paymentResult.Failed("خطایی رخ داد"));
         
                 return Redirect(
-                    $"https://{_zarinPalFactory.Prefix}.zarinpal.com/pg/StartPay/{paymentResponse.Authority}");
+                    $"https://{_zarinPalFactory.Prefix}.zarinpal.com/pg/StartPay/{paymentResponse}");
             }
         
             
