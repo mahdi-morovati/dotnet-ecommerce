@@ -1,4 +1,5 @@
-﻿namespace _0_framework.Application.ZarinPal
+﻿
+namespace _0_framework.Application.ZarinPal
 {
     public interface IZarinPalFactory
     {

@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using _0_framework.Application;
 using _0_framework.Application.ZarinPal;
-// using _0_framework.Application.ZarinPal;
 using _01_LampshadeQuery.Contracts;
 using _01_LampshadeQuery.Contracts.Product;
 using Microsoft.AspNetCore.Authorization;
@@ -19,6 +16,7 @@ namespace ServiceHost.Pages
     {
         public Cart Cart;
         public const string CookieName = "cart-items";
+        private readonly IAuthHelper _authHelper;
         private readonly ICartService _cartService;
         private readonly IProductQuery _productQuery;
         private readonly IZarinPalFactory _zarinPalFactory;
@@ -26,7 +24,8 @@ namespace ServiceHost.Pages
         private readonly ICartCalculatorService _cartCalculatorService;
 
         public CheckoutModel(ICartCalculatorService cartCalculatorService, ICartService cartService,
-            IProductQuery productQuery, IOrderApplication orderApplication, IAuthHelper authHelper, IZarinPalFactory zarinPalFactory)
+            IProductQuery productQuery, IOrderApplication orderApplication, IZarinPalFactory zarinPalFactory,
+            IAuthHelper authHelper)
         {
             Cart = new Cart();
             _cartCalculatorService = cartCalculatorService;
@@ -34,8 +33,8 @@ namespace ServiceHost.Pages
             _productQuery = productQuery;
             _orderApplication = orderApplication;
             _zarinPalFactory = zarinPalFactory;
+            _authHelper = authHelper;
         }
-        
 
         public void OnGet()
         {
@@ -74,7 +73,7 @@ namespace ServiceHost.Pages
                 paymentResult.Succeeded(
                     "سفارش شما با موفقیت ثبت شد. پس از تماس کارشناسان ما و پرداخت وجه، سفارش ارسال خواهد شد.", null));
         }
-        
+
         public IActionResult OnGetCallBack([FromQuery] string authority, [FromQuery] string status,
             [FromQuery] long oId)
         {
@@ -82,7 +81,7 @@ namespace ServiceHost.Pages
             var verificationResponse =
                 _zarinPalFactory.CreateVerificationRequest(authority,
                     orderAmount.ToString(CultureInfo.InvariantCulture));
-        
+
             var result = new PaymentResult();
             if (status == "OK" && verificationResponse.Status >= 100)
             {
@@ -91,7 +90,7 @@ namespace ServiceHost.Pages
                 result = result.Succeeded("پرداخت با موفقیت انجام شد.", issueTrackingNo);
                 return RedirectToPage("/PaymentResult", result);
             }
-        
+
             result = result.Failed(
                 "پرداخت با موفقیت انجام نشد. درصورت کسر وجه از حساب، مبلغ تا 24 ساعت دیگر به حساب شما بازگردانده خواهد شد.");
             return RedirectToPage("/PaymentResult", result);

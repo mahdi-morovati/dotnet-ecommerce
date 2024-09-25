@@ -1,9 +1,6 @@
-﻿using System.Net;
-using System.Net.Http.Headers;
-using System.Text;
+﻿using System.Text;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace _0_framework.Application.ZarinPal;
 
