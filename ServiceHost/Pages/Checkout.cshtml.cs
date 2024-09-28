@@ -52,34 +52,34 @@ namespace ServiceHost.Pages
         public IActionResult OnPostPay(int paymentMethod)
         {
             var paymentResult = new PaymentResult();
-            
+    
             var cart = _cartService.Get();
             cart.SetPaymentMethod(paymentMethod);
-        
+
             var result = _productQuery.CheckInventoryStatus(cart.Items);
             if (result.Any(x => !x.IsInStock))
                 return RedirectToPage("/Cart");
-        
+
             var orderId = _orderApplication.PlaceOrder(cart);
             if (paymentMethod == 1)
             {
                 var paymentResponse = _zarinPalFactory.CreatePaymentRequest(
                     cart.PayAmount.ToString(CultureInfo.InvariantCulture), "", "",
-                    "خرید از درگاه لوازم خانگی و دکوری", orderId);
-                
+                    "خرید از درگاه لوازم خانگی و دکوری", orderId).Result; // await در اینجا نیاز است.
+
                 if (paymentResponse == null)
                     return RedirectToPage("/Checkout",
                         paymentResult.Failed("خطایی رخ داد"));
-        
+
                 return Redirect(
-                    $"https://{_zarinPalFactory.Prefix}.zarinpal.com/pg/StartPay/{paymentResponse}");
+                    $"https://{_zarinPalFactory.Prefix}.zarinpal.com/pg/StartPay/{paymentResponse.Data.Authority}");
             }
-        
-            
+
             return RedirectToPage("/PaymentResult",
                 paymentResult.Succeeded(
                     "سفارش شما با موفقیت ثبت شد. پس از تماس کارشناسان ما و پرداخت وجه، سفارش ارسال خواهد شد.", null));
         }
+
         
         public IActionResult OnGetCallBack([FromQuery] string authority, [FromQuery] string status,
             [FromQuery] long oId)
