@@ -27,7 +27,6 @@ public class ZarinPalFactory : IZarinPalFactory
             try
             {
                 HttpResponseMessage response = await httpClient.PostAsync(url, content);
-                Console.WriteLine($"Response status code: {response.StatusCode}");
                 response.EnsureSuccessStatusCode();
 
                 string responseBody = await response.Content.ReadAsStringAsync();
@@ -71,24 +70,29 @@ public class ZarinPalFactory : IZarinPalFactory
         }
 
 
-        public VerificationResponse CreateVerificationRequest(string authority, string amount)
+        public async Task<VerificationResponse> CreateVerificationRequest(string authority, string amount)
         {
-            return null;
-            // var client = new RestClient($"https://{Prefix}.zarinpal.com/pg/v4/payment/verify.json");
-            // // var request = new RestRequest(Method.Po);
-            // request.AddHeader("Content-Type", "application/json");
-            //
-            // amount = amount.Replace(",", "");
-            // var finalAmount = int.Parse(amount);
-            //
-            // request.AddJsonBody(new VerificationRequest
-            // {
-            //     Amount = finalAmount,
-            //     MerchantID = MerchantId,
-            //     Authority = authority
-            // });
-            // var response = client.Execute(request);
-            // var jsonSerializer = new JsonSerializer();
-            // // return jsonSerializer.Deserialize<VerificationResponse>(response);
+            amount = amount.Replace(",", "");
+            var finalAmount = int.Parse(amount);
+            
+            var body = new VerificationRequest
+            {
+                amount = finalAmount,
+                merchant_id = MerchantId,
+                authority = authority
+            };
+            string jsonBody = JsonConvert.SerializeObject(body);
+            var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await httpClient.PostAsync($"https://{Prefix}.zarinpal.com/pg/v4/payment/verify.json", content);
+            string responseBody = await response.Content.ReadAsStringAsync();
+            var paymentResponse = JsonConvert.DeserializeObject<VerificationResponse>(responseBody);
+            
+            if (paymentResponse != null && paymentResponse.data != null)
+            {
+                Console.WriteLine("Status: " + paymentResponse.data.code);
+                Console.WriteLine("RefID: " + paymentResponse.data.ref_id);
+            }
+            
+            return paymentResponse;
         }
     }
