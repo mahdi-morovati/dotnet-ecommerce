@@ -22,6 +22,14 @@ public class CartModel : PageModel
     {
         var serializer = new JavaScriptSerializer();
         var value = Request.Cookies[CookieName];
+        
+        if (string.IsNullOrEmpty(value))
+        {
+            // اگر کوکی خالی است، از ادامه پردازش جلوگیری کنید یا یک مقدار پیش‌فرض قرار دهید
+            CartItems = new List<CartItem>(); // یا هر اقدام مناسب دیگری
+            return; 
+        }
+        
         var cartItems = serializer.Deserialize<List<CartItem>>(value);// convert value to List<CartItem> (list of cart items)
         foreach (var item in cartItems)
             item.CalculateTotalItemPrice();
@@ -33,10 +41,21 @@ public class CartModel : PageModel
     {
         var serializer = new JavaScriptSerializer();
         var value = Request.Cookies[CookieName];
+        
+        if (string.IsNullOrEmpty(value))
+        {
+            // اگر کوکی خالی است، از ادامه پردازش جلوگیری کنید یا یک مقدار پیش‌فرض قرار دهید
+            return RedirectToPage("/Cart");
+        }
+        
+        
         Response.Cookies.Delete(CookieName);
         var cartItems = serializer.Deserialize<List<CartItem>>(value);
         var itemToRemove = cartItems.FirstOrDefault(x => x.Id == id);
-        cartItems.Remove(itemToRemove);
+
+        if (itemToRemove != null)
+            cartItems.Remove(itemToRemove);
+        
         var options = new CookieOptions {Expires = DateTime.Now.AddDays(2)};
         Response.Cookies.Append(CookieName, serializer.Serialize(cartItems), options);
         return RedirectToPage("/Cart");

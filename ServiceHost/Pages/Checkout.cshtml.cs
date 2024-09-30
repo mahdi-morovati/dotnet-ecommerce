@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using _0_framework.Application;
 using _0_framework.Application.ZarinPal;
-// using _0_framework.Application.ZarinPal;
 using _01_LampshadeQuery.Contracts;
 using _01_LampshadeQuery.Contracts.Product;
 using Microsoft.AspNetCore.Authorization;
