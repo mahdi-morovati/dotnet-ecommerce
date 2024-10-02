@@ -1,33 +1,27 @@
-﻿namespace _0_framework.Application.ZarinPal
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+
+namespace _0_framework.Application.ZarinPal
 {
-    /// <summary>
-    /// response
-    ///
-    /// {
-    ///    "data": {
-    ///        "wages": null,
-    ///        "code": 100,
-    ///        "message": "Paid",
-    ///        "card_hash": "0866A6EAEA5CB085E4CF6EF19296BF19647552DD5F96F1E530DB3AE61837EFE7",
-    ///        "card_pan": "999999******9999",
-    ///        "ref_id": 76601,
-    ///        "fee_type": "Merchant",
-    ///        "fee": 1200,
-    ///        "shaparak_fee": 1200,
-    ///        "order_id": null
-    ///    },
-    ///    "errors": []
-    ///}
-    /// </summary>
     public class VerificationResponse
     {
         public Data data { get; set; }
-        public List<string> errors { get; set; }
+        
+        [JsonConverter(typeof(SingleOrArrayConverter<Error>))]
+        public List<Error> errors { get; set; } // استفاده از کانورتر
 
         public class Data
         {
             public int code { get; set; }
             public long ref_id { get; set; }
+        }
+
+        public class Error
+        {
+            public string message { get; set; } // پیام خطا
+            public int code { get; set; } // کد خطا
+            public List<string> validations { get; set; } // اعتبارسنجی‌ها (در صورت وجود)
         }
     }
 }
