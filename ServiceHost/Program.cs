@@ -1,4 +1,7 @@
 using _0_framework.Application;
+using _0_framework.Application.Sms;
+using _0_framework.Application.Sms;
+using _0_framework.Application.ZarinPal;
 using _0_framework.Infrastructure;
 using AccountManagement.Configuration;
 using DiscountManagement.Configuration;
@@ -21,11 +24,13 @@ AccountManagementBootstrapper.Configure(builder.Services, connectionString);
 builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
 builder.Services.AddTransient<IFileUploader, FileUploader>();
 builder.Services.AddTransient<IAuthHelper, AuthHelper>();
+builder.Services.AddTransient<IZarinPalFactory, ZarinPalFactory>();
+builder.Services.AddTransient<ISmsService, SmsService>();
 
 builder.Services.Configure<CookiePolicyOptions>(options =>
 {
     options.CheckConsentNeeded = context => true;
-    options.MinimumSameSitePolicy = SameSiteMode.Strict;
+    options.MinimumSameSitePolicy = SameSiteMode.Lax;
 });
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o =>

@@ -3,6 +3,7 @@ using _01_LampshadeQuery.Contracts.Product;
 using DiscountManagement.Infrastructure.EFCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
+using ShopManagement.Application.Contracts.Order;
 using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Infrastructure.EFCore;
 
@@ -59,7 +60,7 @@ public class ProductQuery : IProductQuery
                 product.IsInStock = productInventory.InStock;
                 var price = productInventory.UnitPrice;
                 product.Price = price.ToMoney();
-                // product.DoublePrice = price;
+                product.DoublePrice = price;
                 var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
                 if (discount != null)
                 {
@@ -176,5 +177,19 @@ public class ProductQuery : IProductQuery
         }
 
         return products;
+    }
+
+    public List<CartItem> CheckInventoryStatus(List<CartItem> cartItems)
+    {
+        var inventories = _inventoryContext.Inventory.ToList();
+
+        foreach (var cartItem in cartItems.Where(cartItem =>
+                     inventories.Any(x => x.ProductId == cartItem.Id && x.InStock)))
+        {
+            var itemInventory = inventories.Find(x => x.ProductId == cartItem.Id);
+            cartItem.IsInStock = itemInventory.CalculateCurrentCount() >= cartItem.Count;
+        }
+
+        return cartItems;
     }
 }
