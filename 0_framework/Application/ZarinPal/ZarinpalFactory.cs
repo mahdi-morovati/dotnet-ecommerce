@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace _0_framework.Application.ZarinPal;
@@ -7,14 +8,16 @@ namespace _0_framework.Application.ZarinPal;
 public class ZarinPalFactory : IZarinPalFactory
     {
         private readonly IConfiguration _configuration;
+        private readonly ILogger<ZarinPalFactory> _logger;
 
         public string Prefix { get; set; }
         private string MerchantId { get;}
         private static readonly HttpClient httpClient = new HttpClient();
 
-        public ZarinPalFactory(IConfiguration configuration)
+        public ZarinPalFactory(IConfiguration configuration, ILogger<ZarinPalFactory> logger)
         {
             _configuration = configuration;
+            _logger = logger;
             Prefix = _configuration.GetSection("payment")["method"];
             MerchantId= _configuration.GetSection("payment")["merchant"];
         }
@@ -72,27 +75,58 @@ public class ZarinPalFactory : IZarinPalFactory
 
         public async Task<VerificationResponse> CreateVerificationRequest(string authority, string amount)
         {
-            amount = amount.Replace(",", "");
-            var finalAmount = int.Parse(amount);
-            
-            var body = new VerificationRequest
+            try
             {
-                amount = finalAmount,
-                merchant_id = MerchantId,
-                authority = authority
-            };
-            string jsonBody = JsonConvert.SerializeObject(body);
-            var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync($"https://{Prefix}.zarinpal.com/pg/v4/payment/verify.json", content);
-            string responseBody = await response.Content.ReadAsStringAsync();
-            var paymentResponse = JsonConvert.DeserializeObject<VerificationResponse>(responseBody);
-            
-            if (paymentResponse != null && paymentResponse.data != null)
-            {
-                Console.WriteLine("Status: " + paymentResponse.data.code);
-                Console.WriteLine("RefID: " + paymentResponse.data.ref_id);
+                // پاکسازی و تبدیل مقدار amount
+                amount = amount.Replace(",", "");
+                var finalAmount = int.Parse(amount);
+
+                // ساخت body برای درخواست
+                var body = new VerificationRequest
+                {
+                    amount = finalAmount,
+                    merchant_id = MerchantId,
+                    authority = authority
+                };
+
+                // تبدیل به JSON و ایجاد درخواست
+                string jsonBody = JsonConvert.SerializeObject(body);
+                var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+                // ارسال درخواست به سرور زرین‌پال
+                HttpResponseMessage response = await httpClient.PostAsync($"https://{Prefix}.zarinpal.com/pg/v4/payment/verify.json", content);
+
+                // بررسی موفقیت درخواست
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception(ApplicationMessages.PaymentVerifyFailed + response.StatusCode);
+                }
+
+                // دریافت پاسخ به صورت JSON
+                string responseBody = await response.Content.ReadAsStringAsync();
+                var paymentResponse = JsonConvert.DeserializeObject<VerificationResponse>(responseBody);
+
+                // بررسی محتوای response
+                if (paymentResponse != null && paymentResponse.data != null)
+                {
+                    return paymentResponse;
+                }
+                else if (paymentResponse.errors != null && paymentResponse.errors.Count > 0)
+                {
+                    // در صورت وجود خطا در پاسخ، پیام مناسب نمایش داده می‌شود
+                    throw new Exception(ApplicationMessages.PaymentFailed + paymentResponse.errors[0].message);
+                }
+
+                throw new Exception(ApplicationMessages.InvalidResponseFromGateway);
             }
-            
-            return paymentResponse;
+            catch (Exception ex)
+            {
+                // مدیریت خطا
+                _logger.LogError(ex, ApplicationMessages.ErrorOccurredWhileVerifyingPayment);
+                throw new Exception(ApplicationMessages.ErrorOccurredWhileVerifyingPayment);
+            }
         }
+        
+        
+
     }

@@ -78,26 +78,34 @@ namespace ServiceHost.Pages
         }
 
         
-        public async Task<IActionResult> OnGetCallBack([FromQuery] string authority, [FromQuery] string status,
-            [FromQuery] long oId)
+        public async Task<IActionResult> OnGetCallBack([FromQuery] string authority, [FromQuery] string status, [FromQuery] long oId)
         {
-            var orderAmount = _orderApplication.GetAmountBy(oId);
-            var verificationResponse = await _zarinPalFactory.CreateVerificationRequest(authority,
-                orderAmount.ToString(CultureInfo.InvariantCulture));
-
             var result = new PaymentResult();
-            if (status == "OK" && verificationResponse.data.code >= 100)
+    
+            try
             {
-                var issueTrackingNo = _orderApplication.PaymentSucceeded(oId, verificationResponse.data.ref_id);
-                Response.Cookies.Delete("cart-items");
-                result = result.Succeeded("پرداخت با موفقیت انجام شد.", issueTrackingNo);
+                var orderAmount = _orderApplication.GetAmountBy(oId);
+                var verificationResponse = await _zarinPalFactory.CreateVerificationRequest(authority, orderAmount.ToString(CultureInfo.InvariantCulture));
+
+                if (status == "OK" && verificationResponse.data.code >= 100)
+                {
+                    var issueTrackingNo = _orderApplication.PaymentSucceeded(oId, verificationResponse.data.ref_id);
+                    Response.Cookies.Delete("cart-items");
+                    result = result.Succeeded("پرداخت با موفقیت انجام شد.", issueTrackingNo);
+                    return RedirectToPage("/PaymentResult", result);
+                }
+
+                result = result.Failed("پرداخت با موفقیت انجام نشد. درصورت کسر وجه از حساب، مبلغ تا 24 ساعت دیگر به حساب شما بازگردانده خواهد شد.");
                 return RedirectToPage("/PaymentResult", result);
             }
-
-            result = result.Failed(
-                "پرداخت با موفقیت انجام نشد. درصورت کسر وجه از حساب، مبلغ تا 24 ساعت دیگر به حساب شما بازگردانده خواهد شد.");
-            return RedirectToPage("/PaymentResult", result);
+            catch (Exception ex)
+            {
+                // هدایت به صفحه خطا یا نمایش پیام مناسب به کاربر
+                result = result.Failed("خطایی در پردازش پرداخت رخ داد: " + ex.Message);
+                return RedirectToPage("/PaymentResult", result);
+            }
         }
+
 
     }
 }
