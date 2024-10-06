@@ -1,7 +1,7 @@
 using _01_LampshadeQuery.Contracts.Product;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ServiceHost.Controllers;
+namespace ShopManagement.Presentation.Api;
 
 [ApiController]
 [Route("api/[controller]")]
