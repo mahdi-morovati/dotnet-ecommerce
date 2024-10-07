@@ -60,7 +60,7 @@ var applicationUrl =  Environment.GetEnvironmentVariable("ASPNETCORE_URLS").Spli
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("ApiCors", builder => builder.WithOrigins("applicationUrl"));
+    options.AddPolicy("ApiCors", builder => builder.WithOrigins(applicationUrl));
 });
 
 builder.Services.AddRazorPages()
