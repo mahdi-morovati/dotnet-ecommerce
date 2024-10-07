@@ -117,7 +117,7 @@ function changeCartItemCount(id, totalId, count) {
 
 
     const settings = {
-        "url": "https://localhost:5001/api/inventory",
+        "url": "http://localhost:5044/api/inventory",
         "method": "POST",
         "timeout": 0,
         "headers": {
