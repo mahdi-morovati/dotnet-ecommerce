@@ -6,9 +6,11 @@ using _0_framework.Infrastructure;
 using AccountManagement.Configuration;
 using DiscountManagement.Configuration;
 using InventoryManagement.Infrastructure.Configuration;
+using InventoryManagement.Presentation.Api;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using ServiceHost;
 using ShopManagement.Configuration;
+using ShopManagement.Presentation.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,6 +55,14 @@ builder.Services.AddAuthorization(options =>
     }
 );
 
+// Read the applicationUrl from launchSettings.json
+var applicationUrl =  Environment.GetEnvironmentVariable("ASPNETCORE_URLS").Split(";").First();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("ApiCors", builder => builder.WithOrigins(applicationUrl));
+});
+
 builder.Services.AddRazorPages()
     .AddMvcOptions(options => options.Filters.Add<SecurityPageFilter>())
     .AddRazorPagesOptions(options =>
@@ -62,7 +72,9 @@ builder.Services.AddRazorPages()
         options.Conventions.AuthorizeAreaFolder("Administration", "/Discounts", "Discount");
         options.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
     }
-    );
+    )
+    .AddApplicationPart(typeof(ProductController).Assembly)
+    .AddApplicationPart(typeof(InventoryController).Assembly);
 
 var app = builder.Build();
 
@@ -85,6 +97,10 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseCors("ApiCors");
+
 app.MapRazorPages();
+
+app.MapControllers();
 
 app.Run();

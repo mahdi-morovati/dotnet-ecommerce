@@ -67,7 +67,7 @@ function removeFromCart(id) {
     updateCart();
 }
 
-function changeCartItemCount(id, totalId, count) {
+async function changeCartItemCount(id, totalId, count) {
     var products = $.cookie(cookieName);
     products = JSON.parse(products);
     const productIndex = products.findIndex(x => x.id == id);
@@ -115,9 +115,12 @@ function changeCartItemCount(id, totalId, count) {
     //    }
     //});
 
-
+    const response = await fetch('/api/config/url');
+    const config = await response.json();
+    const apiUrl = config.url;
+    
     const settings = {
-        "url": "https://localhost:5001/api/inventory",
+        "url": `${apiUrl}/api/inventory`, // Use the fetched URL here
         "method": "POST",
         "timeout": 0,
         "headers": {
