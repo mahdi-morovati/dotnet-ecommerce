@@ -55,6 +55,14 @@ builder.Services.AddAuthorization(options =>
     }
 );
 
+// Read the applicationUrl from launchSettings.json
+var applicationUrl =  Environment.GetEnvironmentVariable("ASPNETCORE_URLS").Split(";").First();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("ApiCors", builder => builder.WithOrigins("applicationUrl"));
+});
+
 builder.Services.AddRazorPages()
     .AddMvcOptions(options => options.Filters.Add<SecurityPageFilter>())
     .AddRazorPagesOptions(options =>
@@ -88,6 +96,8 @@ app.UseCookiePolicy();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseCors("ApiCors");
 
 app.MapRazorPages();
 
