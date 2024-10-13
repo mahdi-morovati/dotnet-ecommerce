@@ -1,6 +1,7 @@
+using BlogManagement.Domain.ArticleCategoryAgg;
 using Xunit;
 
-namespace BlogManagement.Tests.Domain.ArticleCategory;
+namespace BlogManagement.Tests.Domain.ArticleCategoryAgg;
 
 public class ArticleCategoryTests
 {
@@ -20,7 +21,7 @@ public class ArticleCategoryTests
         var canonicalAddress = "http://example.com/test-category";
 
         // Act
-        var category = new BlogManagement.Domain.ArticleCategoryAgg.ArticleCategory(name, picture, pictureAlt,
+        var category = new ArticleCategory(name, picture, pictureAlt,
             pictureTitle, description, showOrder, slug, keywords, metaDescription, canonicalAddress);
 
         // Assert
@@ -40,7 +41,7 @@ public class ArticleCategoryTests
     public void Should_Edit_ArticleCategory_With_Valid_Data()
     {
         // Arrange
-        var category = new BlogManagement.Domain.ArticleCategoryAgg.ArticleCategory("Initial Name",
+        var category = new ArticleCategory("Initial Name",
             "initial-picture.jpg", "Initial Alt", "Initial Title",
             "Initial Description", 1, "initial-slug", "initial, keywords",
             "Initial meta description", "http://example.com/initial");

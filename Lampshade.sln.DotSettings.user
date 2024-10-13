@@ -6,5 +6,6 @@
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Domain.ArticleAgg.ArticleTests&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Domain.ArticleCategory.ArticleCategoryTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Domain.ArticleCategoryAgg.ArticleCategoryTests&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

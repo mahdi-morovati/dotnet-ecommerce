@@ -3,7 +3,7 @@ using BlogManagement.Domain.ArticleAgg;
 
 namespace BlogManagement.Domain.ArticleCategoryAgg;
 
-public class ArticleCategory: EntityBase
+public class ArticleCategory : EntityBase
 {
     public string Name { get; private set; }
     public string Picture { get; private set; }
@@ -36,6 +36,9 @@ public class ArticleCategory: EntityBase
     public void Edit(string name, string picture, string pictureAlt, string pictureTitle, string description, int showOrder,
         string slug, string keywords, string metaDescription, string canonicalAddress)
     {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentException("Name cannot be empty.", nameof(name));
+
         Name = name;
 
         if (!string.IsNullOrWhiteSpace(picture))
@@ -50,4 +53,5 @@ public class ArticleCategory: EntityBase
         MetaDescription = metaDescription;
         CanonicalAddress = canonicalAddress;
     }
+
 }
