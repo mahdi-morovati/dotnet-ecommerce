@@ -63,4 +63,33 @@ public class ArticleCategoryTests
         Assert.Equal("Updated meta description", category.MetaDescription);
         Assert.Equal("http://example.com/updated", category.CanonicalAddress);
     }
+    
+    [Fact]
+    public void Should_Not_Update_ArticleCategory_With_Invalid_Data()
+    {
+        // Arrange
+        var category = new ArticleCategory("Initial Name", "initial.jpg", "Initial Alt", "Initial Title", 
+            "Initial Description", 1, "initial-slug", "initial,keywords", "Initial Meta", "http://initial.com");
+        
+        // Assert
+        // Act & Assert
+        var exception = Assert.Throws<ArgumentException>(() =>
+        {
+            category.Edit("", "", "", "", "", 0, "", "", "", "");
+        });
+
+        // Additional assertions to verify the exception details if needed
+        Assert.Equal("Name cannot be empty. (Parameter 'name')", exception.Message);
+            
+        Assert.Equal("initial.jpg", category.Picture); // Ensure that picture is not changed
+        Assert.Equal("Initial Alt", category.PictureAlt); // Ensure that PictureAlt is not changed
+        Assert.Equal("Initial Title", category.PictureTitle); // Ensure that PictureTitle is not changed
+        Assert.Equal("Initial Description", category.Description); // Ensure that Description is not changed
+        Assert.Equal(1, category.ShowOrder); // Ensure that ShowOrder is not changed
+        Assert.Equal("initial-slug", category.Slug); // Ensure that Slug is not changed
+        Assert.Equal("initial,keywords", category.Keywords); // Ensure that Keywords is not changed
+        Assert.Equal("Initial Meta", category.MetaDescription); // Ensure that MetaDescription is not changed
+        Assert.Equal("http://initial.com", category.CanonicalAddress); // Ensure that CanonicalAddress is not changed
+    }
+
 }
