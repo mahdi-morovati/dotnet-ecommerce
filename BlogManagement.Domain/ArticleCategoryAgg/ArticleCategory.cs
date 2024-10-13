@@ -1,3 +1,4 @@
+using _0_framework.Application;
 using _0_framework.Domain;
 using BlogManagement.Domain.ArticleAgg;
 
@@ -21,6 +22,9 @@ public class ArticleCategory : EntityBase
         string description, int showOrder, string slug, string keywords, string metaDescription,
         string canonicalAddress)
     {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentException(ValidationMessages.CannotBeEmpty, nameof(name));
+
         Name = name;
         Picture = picture;
         PictureAlt = pictureAlt;
@@ -37,7 +41,7 @@ public class ArticleCategory : EntityBase
         string slug, string keywords, string metaDescription, string canonicalAddress)
     {
         if (string.IsNullOrWhiteSpace(name))
-            throw new ArgumentException("Name cannot be empty.", nameof(name));
+            throw new ArgumentException(ValidationMessages.CannotBeEmpty, nameof(name));
 
         Name = name;
 

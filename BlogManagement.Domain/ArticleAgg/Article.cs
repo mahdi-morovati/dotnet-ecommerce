@@ -1,3 +1,4 @@
+using _0_framework.Application;
 using _0_framework.Domain;
 using BlogManagement.Domain.ArticleCategoryAgg;
 
@@ -23,6 +24,9 @@ public class Article: EntityBase
             string picture, string pictureAlt, string pictureTitle, DateTime publishDate, string slug,
             string keywords, string metaDescription, string canonicalAddress, long categoryId)
         {
+            if(string.IsNullOrWhiteSpace(title))
+                throw new ArgumentException(ValidationMessages.CannotBeEmpty, nameof(title));
+            
             Title = title;
             ShortDescription = shortDescription;
             Description = description;
