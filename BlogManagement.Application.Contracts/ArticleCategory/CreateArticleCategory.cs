@@ -9,6 +9,8 @@ public class CreateArticleCategory
     [Required(ErrorMessage = ValidationMessages.IsRequired)]
     public string Name { get; set; }
         
+    [FileExtensionLimitation(new string[] { ".jpeg", ".jpg", ".png" }, ErrorMessage = ValidationMessages.InvalidFileFormat)]
+    [MaxFileSize(3 * 1024 * 1024, ErrorMessage = ValidationMessages.MaxFileSize)]
     public IFormFile Picture { get; set; }
 
     [Required(ErrorMessage = ValidationMessages.IsRequired)]

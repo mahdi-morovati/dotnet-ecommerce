@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace _0_framework.Application;
 
-public class MaxFileSizeAttribute : ValidationAttribute, IClientModelValidator
+public class MaxFileSizeAttribute : ValidationAttribute
 {
     private readonly int _maxFileSize;
 
@@ -13,17 +13,19 @@ public class MaxFileSizeAttribute : ValidationAttribute, IClientModelValidator
         _maxFileSize = maxFileSize;
     }
 
-    public override bool IsValid(object value)
+    protected override ValidationResult IsValid(object value, ValidationContext validationContext)
     {
         var file = value as IFormFile;
-        if (file == null) return true;
+        if (file == null)
+        {
+            return ValidationResult.Success; // اگر فایلی وجود ندارد، خطا ندهید
+        }
 
-        return file.Length <= _maxFileSize;
-    }
+        if (file.Length > _maxFileSize)
+        {
+            return new ValidationResult(ErrorMessage ?? $"فایل حجیم تر از حد مجاز است");
+        }
 
-    public void AddValidation(ClientModelValidationContext context)
-    {
-        context.Attributes.Add("data-val", "true");
-        context.Attributes.Add("data-val-file-maxFileSize", ErrorMessage);
+        return ValidationResult.Success;
     }
 }

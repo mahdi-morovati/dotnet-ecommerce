@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using System.Text;
 using _0_framework.Application;
@@ -157,5 +158,77 @@ public class ArticleCategoryApplicationTests
         // Act & Assert
         var exception = Assert.Throws<ArgumentException>(() => _articleCategoryApplication.Edit(command));
         Assert.Equal(ValidationMessages.CannotBeEmpty + " (Parameter 'name')", exception.Message);
+    }
+
+    [Fact]
+    public void Should_Return_Error_When_File_Has_Invalid_Extension()
+    {
+        // Arrange
+        var command = new CreateArticleCategory
+        {
+            Name = "Test Category",
+            Description = "Test Description",
+            Slug = "test-category",
+            Picture = _fileMock.Object, // این فایل باید پسوند نامعتبر داشته باشد
+            PictureAlt = "Test Alt",
+            PictureTitle = "Test Title",
+            Keywords = "test,keywords",
+            MetaDescription = "Test Meta",
+            ShowOrder = 1
+        };
+
+        // تغییر پسوند فایل به نامعتبر
+        _fileMock.Setup(x => x.FileName).Returns("invalid_file.txt");
+
+        // Act
+        var validationContext = new ValidationContext(command);
+        var validationResults = new List<ValidationResult>();
+        var isValid = Validator.TryValidateObject(command, validationContext, validationResults, true);
+
+        // Assert
+        Assert.False(isValid);
+        Assert.Contains(validationResults, v => v.ErrorMessage == ValidationMessages.InvalidFileFormat);
+    }
+
+    [Fact]
+    public void Should_Return_Error_When_File_Is_Too_Large()
+    {
+        // Arrange
+        var command = new CreateArticleCategory
+        {
+            Name = "Test Category",
+            Description = "Test Description",
+            Slug = "test-category",
+            Picture = CreateLargeFile(), // متدی که فایل بزرگ ایجاد می‌کند
+            PictureAlt = "Test Alt",
+            PictureTitle = "Test Title",
+            Keywords = "test,keywords",
+            MetaDescription = "Test Meta",
+            ShowOrder = 1
+        };
+
+        // Act
+        var result = _articleCategoryApplication.Create(command);
+        
+        var validationContext = new ValidationContext(command);
+        var validationResults = new List<ValidationResult>();
+        var isValid = Validator.TryValidateObject(command, validationContext, validationResults, true);
+
+
+        // Assert
+        Assert.False(isValid);
+        Assert.Equal(ValidationMessages.MaxFileSize, result.Message);
+    }
+
+    private IFormFile CreateLargeFile()
+    {
+        var content = new string('a', 50 * 1024 * 1024 + 1); // فایل بزرگتر از 3MB
+        var fileName = "large_image.jpg";
+        var ms = new MemoryStream(Encoding.UTF8.GetBytes(content));
+        var fileMock = new Mock<IFormFile>();
+        fileMock.Setup(x => x.OpenReadStream()).Returns(ms);
+        fileMock.Setup(x => x.FileName).Returns(fileName);
+        fileMock.Setup(x => x.Length).Returns(ms.Length);
+        return fileMock.Object;
     }
 }
