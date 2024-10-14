@@ -34,7 +34,20 @@ public class ArticleCategoryApplication : IArticleCategoryApplication
 
     public OperationResult Edit(EditArticleCategory command)
     {
-        throw new NotImplementedException();
+        var operation = new OperationResult();
+        var articleCategory = _articleCategoryRepository.Get(command.Id);
+        if (articleCategory == null)
+            return operation.Failed(ApplicationMessages.RecordNotFound);
+        if (_articleCategoryRepository.Exists(x => x.Name == command.Name && x.Id != command.Id))
+            return operation.Failed(ApplicationMessages.DuplicatedRecord);
+
+        var slug = command.Slug.Slugify();
+        var pictureName = _fileUploader.Upload(command.Picture, slug);
+        articleCategory.Edit(command.Name, pictureName, command.PictureAlt, command.PictureTitle, command.Description,
+            command.ShowOrder, slug, command.Keywords, command.MetaDescription, command.CanonicalAddress);
+
+        _articleCategoryRepository.SaveChanges();
+        return operation.Succedded();
     }
 
     public EditArticleCategory GetDetails(long id)

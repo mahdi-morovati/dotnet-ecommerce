@@ -17,5 +17,6 @@
     &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Mapping.ArticleMappingTests.Should_Save_Article_To_Database_With_Correct_Mapping&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Mapping.ArticleMappingTests.Should_Throw_Exception_When_Title_Is_Empty&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Create_ProductCategory_Successfully&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Edit_ProductCategory_Successfully&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
