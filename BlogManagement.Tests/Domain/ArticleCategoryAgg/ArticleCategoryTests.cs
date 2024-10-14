@@ -1,3 +1,4 @@
+using _0_framework.Application;
 using BlogManagement.Domain.ArticleCategoryAgg;
 using Xunit;
 
@@ -79,7 +80,7 @@ public class ArticleCategoryTests
         });
 
         // Additional assertions to verify the exception details if needed
-        Assert.Equal("Name cannot be empty. (Parameter 'name')", exception.Message);
+        Assert.Equal(ValidationMessages.CannotBeEmpty + " (Parameter 'name')", exception.Message);
             
         Assert.Equal("initial.jpg", category.Picture); // Ensure that picture is not changed
         Assert.Equal("Initial Alt", category.PictureAlt); // Ensure that PictureAlt is not changed
