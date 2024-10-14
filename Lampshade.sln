@@ -82,6 +82,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogManagement.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogManagement.Infrastructure.Configure", "BlogManagement.Infrastructure.Configure\BlogManagement.Infrastructure.Configure.csproj", "{5C808706-900F-4E02-A970-5AEA75F45771}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogManagement.Application", "BlogManagement.Application\BlogManagement.Application.csproj", "{DB3ADED0-8B15-47F1-B553-AD49C494C658}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -216,6 +218,10 @@ Global
 		{5C808706-900F-4E02-A970-5AEA75F45771}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C808706-900F-4E02-A970-5AEA75F45771}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C808706-900F-4E02-A970-5AEA75F45771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB3ADED0-8B15-47F1-B553-AD49C494C658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB3ADED0-8B15-47F1-B553-AD49C494C658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB3ADED0-8B15-47F1-B553-AD49C494C658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB3ADED0-8B15-47F1-B553-AD49C494C658}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1E86478F-3F3F-4840-96D6-ABC3D97654F5} = {0149C220-9CB3-4D9F-88F9-A1D4BD2E6CA6}
@@ -251,5 +257,6 @@ Global
 		{29AC4287-75C6-48F6-BE17-870814D54F08} = {F564535B-88AD-4D02-B88B-D4986E5812E4}
 		{FF0D48D6-228B-427B-8226-D263885DF27B} = {29AC4287-75C6-48F6-BE17-870814D54F08}
 		{5C808706-900F-4E02-A970-5AEA75F45771} = {29AC4287-75C6-48F6-BE17-870814D54F08}
+		{DB3ADED0-8B15-47F1-B553-AD49C494C658} = {DC0DB16A-E79A-45C2-A0F1-05673DACF0F8}
 	EndGlobalSection
 EndGlobal

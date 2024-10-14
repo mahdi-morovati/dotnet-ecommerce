@@ -1,8 +1,9 @@
+using _0_framework.Domain;
 using BlogManagement.Application.Contracts.ArticleCategory;
 
 namespace BlogManagement.Domain.ArticleCategoryAgg;
 
-public interface IArticleCategoryRepository
+public interface IArticleCategoryRepository : IRepository<long, ArticleCategory>
 {
     string? GetSlugBy(long id);
     EditArticleCategory? GetDetails(long id);
