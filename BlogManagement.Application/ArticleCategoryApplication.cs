@@ -52,16 +52,16 @@ public class ArticleCategoryApplication : IArticleCategoryApplication
 
     public EditArticleCategory GetDetails(long id)
     {
-        throw new NotImplementedException();
+        return _articleCategoryRepository.GetDetails(id);
     }
 
     public List<ArticleCategoryViewModel> GetArticleCategories()
     {
-        throw new NotImplementedException();
+        return _articleCategoryRepository.GetArticleCategories();
     }
 
     public List<ArticleCategoryViewModel> Search(ArticleCategorySearchModel searchModel)
     {
-        throw new NotImplementedException();
+        return _articleCategoryRepository.Search(searchModel);
     }
 }
