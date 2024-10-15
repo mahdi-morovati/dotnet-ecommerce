@@ -210,14 +210,14 @@ public class ArticleCategoryApplicationTests
         // Act
         var result = _articleCategoryApplication.Create(command);
         
+        // Act
         var validationContext = new ValidationContext(command);
         var validationResults = new List<ValidationResult>();
         var isValid = Validator.TryValidateObject(command, validationContext, validationResults, true);
-
-
+        
         // Assert
         Assert.False(isValid);
-        Assert.Equal(ValidationMessages.MaxFileSize, result.Message);
+        Assert.Contains(validationResults, v => v.ErrorMessage == ValidationMessages.MaxFileSize);
     }
 
     private IFormFile CreateLargeFile()

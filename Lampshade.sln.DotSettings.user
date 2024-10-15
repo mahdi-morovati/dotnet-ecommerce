@@ -1,42 +1,22 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AAssert_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002Econfig_003FJetBrains_003FRider2024_002E2_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003F285675a6903d43ca89ed13e37e2bfe3c2d4d0_003F5b_003F6da6b2ff_003FAssert_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AConfigurationManager_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002Econfig_003FJetBrains_003FRider2024_002E2_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003Ff8dbf677037c4363bdec07364295385f11e00_003Fd3_003F6518ce63_003FConfigurationManager_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003ADbContext_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002Econfig_003FJetBrains_003FRider2024_002E2_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003F5e15ba24065646ab8edfdd48fa903c1426a830_003F6a_003F917ec526_003FDbContext_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AHttpClient_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002Econfig_003FJetBrains_003FRider2024_002E2_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003F91935f93e4944ff38012497b632344eb19ee00_003F8c_003F01f808ae_003FHttpClient_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AIFormFile_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002Econfig_003FJetBrains_003FRider2024_002E2_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003Fb6bc1862a5544061a8f27bd47eb92c91c600_003F2b_003F510aaaf1_003FIFormFile_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AValidationResult_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002Econfig_003FJetBrains_003FRider2024_002E2_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003F0efc29f60f4141a4a55bc916b5955f902c800_003F68_003F90510d73_003FValidationResult_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
   &lt;Assembly Path="/usr/share/dotnet/packs/Microsoft.AspNetCore.App.Ref/8.0.10/ref/net8.0/Microsoft.AspNetCore.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6824f4f0_002D2cdd_002D4bf5_002D9bfa_002D217822d518dc/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Should_Return_Error_When_File_Has_Invalid_Extension" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cd4b88ec_002D95c8_002D43e8_002Da05c_002Da03e39c576c7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Should_Return_Error_When_File_Is_Too_Large" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Return_Error_When_File_Is_Too_Large&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Return_Error_When_File_Has_Invalid_Extension&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Return_Error_When_File_Is_Too_Large&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7a774cbd_002Dff2e_002D4e67_002D9cf7_002D806c7ee89a0b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Should_Return_Error_When_File_Is_Too_Large #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Return_Error_When_File_Is_Too_Large&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9e15ae0a_002D9729_002D4e54_002D8b79_002Da7d4b6ca741a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ArticleTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Domain.ArticleAgg.ArticleTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Domain.ArticleCategory.ArticleCategoryTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Domain.ArticleCategoryAgg.ArticleCategoryTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Mapping.ArticleCategoryMappingTests.Should_Save_ArticleCategory_To_Database_With_Correct_Mapping&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Mapping.ArticleCategoryMappingTests.Should_Throw_Exception_When_Name_Is_Empty&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Mapping.ArticleCategoryMappingTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Mapping.ArticleMappingTests.Should_Save_Article_To_Database_With_Correct_Mapping&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Mapping.ArticleMappingTests.Should_Throw_Exception_When_Title_Is_Empty&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Create_ProductCategory_Successfully&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Edit_ProductCategory_Successfully&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Throw_Exception_When_Name_Is_Empty_On_Create&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Throw_Exception_When_Name_Is_Empty_On_Edit&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Return_Error_When_File_Has_Invalid_Extension&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Return_Error_When_File_Is_Too_Large&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=dcb51088_002D69c1_002D4a91_002D96d2_002D048cecd5bf5b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Should_Return_Error_When_File_Is_Too_Large" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Return_Error_When_File_Is_Too_Large&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+	
+	
+	
+	
+	
+	</wpf:ResourceDictionary>
