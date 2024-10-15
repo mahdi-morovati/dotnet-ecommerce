@@ -15,12 +15,16 @@ public class ArticleCategoryRepository : RepositoryBase<long, ArticleCategory>, 
         _context = context;
     }
 
-    public string? GetSlugBy(long id)
+    public List<ArticleCategoryViewModel> GetArticleCategories()
     {
-        return _context.ArticleCategories.Select(x => new { x.Id, x.Slug }).FirstOrDefault(x => x.Id == id)?.Slug;
+        return _context.ArticleCategories.Select(x => new ArticleCategoryViewModel
+        {
+            Id = x.Id,
+            Name = x.Name
+        }).ToList();
     }
 
-    public EditArticleCategory? GetDetails(long id)
+    public EditArticleCategory GetDetails(long id)
     {
         return _context.ArticleCategories.Select(x => new EditArticleCategory
         {
@@ -37,13 +41,10 @@ public class ArticleCategoryRepository : RepositoryBase<long, ArticleCategory>, 
         }).FirstOrDefault(x => x.Id == id);
     }
 
-    public List<ArticleCategoryViewModel> GetArticleCategories()
+    public string GetSlugBy(long id)
     {
-        return _context.ArticleCategories.Select(x => new ArticleCategoryViewModel
-        {
-            Id = x.Id,
-            Name = x.Name
-        }).ToList();
+        return _context.ArticleCategories.Select(x => new { x.Id, x.Slug })
+            .FirstOrDefault(x => x.Id == id).Slug;
     }
 
     public List<ArticleCategoryViewModel> Search(ArticleCategorySearchModel searchModel)
@@ -53,15 +54,17 @@ public class ArticleCategoryRepository : RepositoryBase<long, ArticleCategory>, 
             .Select(x => new ArticleCategoryViewModel
             {
                 Id = x.Id,
-                Name = x.Name,
                 Description = x.Description,
+                Name = x.Name,
                 Picture = x.Picture,
                 ShowOrder = x.ShowOrder,
                 CreationDate = x.CreationDate.ToFarsi(),
                 ArticlesCount = x.Articles.Count
             });
+
         if (!string.IsNullOrWhiteSpace(searchModel.Name))
             query = query.Where(x => x.Name.Contains(searchModel.Name));
+
         return query.OrderByDescending(x => x.ShowOrder).ToList();
     }
 }

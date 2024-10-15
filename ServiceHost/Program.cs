@@ -4,6 +4,7 @@ using _0_framework.Application.Sms;
 using _0_framework.Application.ZarinPal;
 using _0_framework.Infrastructure;
 using AccountManagement.Configuration;
+using BlogManagement.Infrastructure.Configure;
 using DiscountManagement.Configuration;
 using InventoryManagement.Infrastructure.Configuration;
 using InventoryManagement.Presentation.Api;
@@ -22,6 +23,8 @@ ShopManagementBootstrapper.Configure(builder.Services, connectionString);
 DiscountManagementBootstrapper.Configure(builder.Services, connectionString);
 InventoryManagementBootstrapper.Configure(builder.Services, connectionString);
 AccountManagementBootstrapper.Configure(builder.Services, connectionString);
+BlogManagementBootstrapper.Configure(builder.Services, connectionString);
+
 
 builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
 builder.Services.AddTransient<IFileUploader, FileUploader>();
