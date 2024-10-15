@@ -231,4 +231,33 @@ public class ArticleCategoryApplicationTests
         fileMock.Setup(x => x.Length).Returns(ms.Length);
         return fileMock.Object;
     }
+    
+    [Fact]
+    public void Should_Return_Error_When_Name_Already_Exists_On_Create()
+    {
+        // Arrange
+        var command = new CreateArticleCategory
+        {
+            Name = "Duplicate Category",
+            Description = "Test Description",
+            Slug = "duplicate-category",
+            Picture = _fileMock.Object,
+            PictureAlt = "Test Alt",
+            PictureTitle = "Test Title",
+            Keywords = "test,keywords",
+            MetaDescription = "Test Meta",
+            ShowOrder = 1
+        };
+
+        _repositoryMock.Setup(x => x.Exists(It.IsAny<Expression<Func<ArticleCategory, bool>>>()))
+            .Returns(true);
+
+        // Act
+        var result = _articleCategoryApplication.Create(command);
+
+        // Assert
+        Assert.False(result.IsSuccedded);
+        Assert.Equal(ApplicationMessages.DuplicatedRecord, result.Message);
+    }
+
 }
