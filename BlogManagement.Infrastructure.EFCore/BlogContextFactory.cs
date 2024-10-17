@@ -10,11 +10,12 @@ public class BlogContextFactory : IDesignTimeDbContextFactory<BlogContext>
     public BlogContext CreateDbContext(string[] args = null)
     {
         var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production";
-        
+
         var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory() + "/../ServiceHost")
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true) // اضافه کردن appsettings.Development.json
+            .AddJsonFile($"appsettings.{environment}.json", optional: true,
+                reloadOnChange: true) // اضافه کردن appsettings.Development.json
             .Build();
 
         var connectionString = configuration.GetConnectionString("LampshadeDb");
