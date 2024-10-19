@@ -13,6 +13,10 @@
     &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Return_Error_When_File_Is_Too_Large&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Return_Error_When_File_Has_Invalid_Extension&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Return_Error_When_Name_Already_Exists_On_Create&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Domain.ArticleAgg.ArticleTests.Should_Create_Article_With_Valid_Data&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Domain.ArticleAgg.ArticleTests.Should_Throw_Exception_When_Title_Is_Empty&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Domain.ArticleAgg.ArticleTests.Should_Edit_Article_With_New_Values&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Domain.ArticleAgg.ArticleTests.Should_Not_Change_Picture_If_New_Picture_Is_Empty&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	
