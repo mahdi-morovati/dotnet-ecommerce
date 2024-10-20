@@ -35,7 +35,7 @@ public class ArticleCategoryApplicationTests
     }
 
     [Fact]
-    public void Should_Create_ProductCategory_Successfully()
+    public void Should_Create_ArticleCategory_Successfully()
     {
         // Arrange
         var command = new CreateArticleCategory
@@ -68,7 +68,7 @@ public class ArticleCategoryApplicationTests
     }
 
     [Fact]
-    public void Should_Edit_ProductCategory_Successfully()
+    public void Should_Edit_ArticleCategory_Successfully()
     {
         // Arrange
         var command = new EditArticleCategory
