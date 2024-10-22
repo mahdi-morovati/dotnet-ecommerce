@@ -57,5 +57,4 @@ public class ArticleCategory : EntityBase
         MetaDescription = metaDescription;
         CanonicalAddress = canonicalAddress;
     }
-
 }

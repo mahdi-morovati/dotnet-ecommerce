@@ -11,7 +11,7 @@
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
   &lt;Assembly Path="/usr/share/dotnet/packs/Microsoft.AspNetCore.App.Ref/8.0.10/ref/net8.0/Microsoft.AspNetCore.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cd4b88ec_002D95c8_002D43e8_002Da05c_002Da03e39c576c7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Should_Return_Error_When_File_Is_Too_Large" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cd4b88ec_002D95c8_002D43e8_002Da05c_002Da03e39c576c7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Should_Return_Error_When_File_Is_Too_Large" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Return_Error_When_File_Is_Too_Large&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleCategoryApplicationTests.Should_Return_Error_When_File_Has_Invalid_Extension&lt;/TestId&gt;
@@ -21,6 +21,12 @@
     &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Domain.ArticleAgg.ArticleTests.Should_Edit_Article_With_New_Values&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Domain.ArticleAgg.ArticleTests.Should_Not_Change_Picture_If_New_Picture_Is_Empty&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Mapping.ArticleMappingTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleApplicationTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e48eaa81_002D91e0_002D4d81_002D8bc1_002Dfd7f270dce14/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ArticleApplicationTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::5376817C-0739-40A6-BE00-879804AF1957::net8.0::BlogManagement.Tests.Application.ArticleApplicationTests&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	
