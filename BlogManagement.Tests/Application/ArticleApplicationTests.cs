@@ -145,5 +145,46 @@ public class ArticleApplicationTests
         _articleRepositoryMock.Verify(repo => repo.SaveChanges(), Times.Never); // نباید تغییرات ذخیره شوند
     }
 
+    [Fact]
+    public void Should_Edit_Successfully()
+    {
+        var command = new EditArticle
+        {
+            Id = 1,
+            Title = "Edited Title",
+            ShortDescription = "Edited Short Description",
+            Description = "Edited Description",
+            Picture = _fileMock.Object,
+            PictureAlt = "Edited Alt",
+            PictureTitle = "Edited Title",
+            PublishDate = "1402/01/01",
+            Keywords = "test,keywords",
+            MetaDescription = "Edited Meta",
+            Slug = "edited-article",
+            CategoryId = 1
+        };
+        
+        var existingArticle = new Article("Test Article", "Test Short Description", "Test Description", "Test Picture", "Test Alt", "Test Title", "1402/01/01".ToGeorgianDateTime(), "test-article", "test,keywords", "Test Meta", "Test Canonical", 1);
+        
+        _articleRepositoryMock.Setup(repo => repo.Get(command.Id))
+           .Returns(existingArticle); // مقدار دهی مقاله وجود دارد
+        
+        _articleRepositoryMock.Setup(repo => repo.Exists(It.IsAny<Expression<Func<Article, bool>>>()))
+           .Returns(false); // مقدار دهی مقاله وجود ندارد
+        
+        _fileUploaderMock.Setup(x => x.Upload(command.Picture, It.IsAny<string>()))
+            .Returns("updated_uploaded_picture.jpg");
+        
+        // Act
+        var result = _articleApplication.Edit(command);
+        
+        // Assert
+        Assert.True(result.IsSuccedded);
+        _articleRepositoryMock.Verify(x => x.SaveChanges(), Times.Once);
+        Assert.Equal("Edited Title", existingArticle.Title);
+        Assert.Equal("Edited Description", existingArticle.Description);
+        
+    }
+
     
 }
