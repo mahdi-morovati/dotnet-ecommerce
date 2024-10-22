@@ -63,13 +63,13 @@ public class ArticleApplication : IArticleApplication
         return operation.Succedded();
     }
 
-    public EditArticle GetDetails(long id)
+    public EditArticle? GetDetails(long id)
     {
-        throw new NotImplementedException();
+        return _articleRepository.GetDetails(id);
     }
 
-    public List<ArticleViewModel> Search(ArticleSearchModel command)
+    public List<ArticleViewModel> Search(ArticleSearchModel searchModel)
     {
-        throw new NotImplementedException();
+        return _articleRepository.Search(searchModel);
     }
 }
