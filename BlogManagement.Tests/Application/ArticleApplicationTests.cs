@@ -185,6 +185,70 @@ public class ArticleApplicationTests
         Assert.Equal("Edited Description", existingArticle.Description);
         
     }
+    
+    
+    [Fact]
+    public void Create_Article_With_Invalid_PublishDate_Should_Throw_FormatException()
+    {
+        // Arrange
+        var invalidPublishDate = "InvalidDate"; // تاریخ نامعتبر
+        var command = new CreateArticle
+        {
+            Title = "Valid Title",
+            ShortDescription = "Valid Short Description",
+            Description = "Valid Description",
+            PublishDate = invalidPublishDate, // ارسال تاریخ نامعتبر
+            // دیگر مقادیر مورد نیاز را تنظیم کنید
+           
+            Picture = _fileMock.Object,
+            PictureAlt = "Test Alt",
+            PictureTitle = "Test Title",
+            Keywords = "test,keywords",
+            MetaDescription = "Test Meta",
+            Slug = "test-article",
+            CategoryId = 1
+        };
+
+        // Act & Assert
+        var exception = Assert.Throws<FormatException>(() => _articleApplication.Create(command));
+
+        // Assert that the exception message is appropriate
+        Assert.Equal("تاریخ باید با فرمت YYYY/MM/DD باشد", exception.Message); // پیام استثنا باید با آنچه که در پیاده‌سازی شما مشخص شده، مطابقت داشته باشد
+    }
+    
+    
+    
+// Example of a data-driven test
+    [Theory]
+    [InlineData("1402-12-01")] // Invalid month
+    [InlineData("1402/13/01")] // Invalid month
+    [InlineData("1402/01/32")] // Invalid day
+    [InlineData("1402/01")]    // Incomplete date
+    [InlineData("abc/01/01")]  // Non-numeric year
+    public void Create_Article_With_Invalid_PublishDate_Should_Throw_FormatException_For_Multiple_Formats(string invalidPublishDate)
+    {
+        // Arrange
+        var command = new CreateArticle
+        {
+            Title = "Valid Title",
+            ShortDescription = "Valid Short Description",
+            Description = "Valid Description",
+            PublishDate = invalidPublishDate,
+            Picture = _fileMock.Object,
+            PictureAlt = "Test Alt",
+            PictureTitle = "Test Title",
+            Keywords = "test,keywords",
+            MetaDescription = "Test Meta",
+            Slug = "test-article",
+            CategoryId = 1
+        };
+
+        // Act & Assert
+        var exception = Assert.Throws<FormatException>(() => _articleApplication.Create(command));
+        Assert.Equal("تاریخ باید با فرمت YYYY/MM/DD باشد", exception.Message);
+    }
+
+
 
     
 }

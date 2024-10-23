@@ -94,9 +94,54 @@ namespace _0_framework.Application
         public static DateTime ToGeorgianDateTime(this string persianDate)
         {
             persianDate = persianDate.ToEnglishNumber();
-            var year = Convert.ToInt32(persianDate.Substring(0, 4));
-            var month = Convert.ToInt32(persianDate.Substring(5, 2));
-            var day = Convert.ToInt32(persianDate.Substring(8, 2));
+    
+            // Validate the length and structure
+            if (persianDate.Length != 10 || persianDate[4] != '/' || persianDate[7] != '/')
+            {
+                throw new FormatException("تاریخ باید با فرمت YYYY/MM/DD باشد");
+            }
+
+            // Extract year, month, day parts
+            var yearPart = persianDate.Substring(0, 4);
+            var monthPart = persianDate.Substring(5, 2);
+            var dayPart = persianDate.Substring(8, 2);
+
+            // Validate that year, month, and day are numeric
+            if (!int.TryParse(yearPart, out var year) || 
+                !int.TryParse(monthPart, out var month) || 
+                !int.TryParse(dayPart, out var day))
+            {
+                throw new FormatException("تاریخ باید با فرمت YYYY/MM/DD باشد");
+            }
+
+            // Validate month range (1 to 12)
+            if (month < 1 || month > 12)
+            {
+                throw new FormatException("ماه باید بین 1 و 12 باشد");
+            }
+
+            // Validate day range (1 to 31)
+            if (day < 1 || day > 31)
+            {
+                throw new FormatException("روز باید بین 1 و 31 باشد");
+            }
+
+            // Additional day validation based on month
+            if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+            {
+                throw new FormatException($"ماه {month} فقط 30 روز دارد");
+            }
+
+            // Check for February (assume Persian month count)
+            if (month == 2)
+            {
+                if (day > 29)
+                {
+                    throw new FormatException("فوریه حداکثر 29 روز دارد");
+                }
+            }
+
+            // If everything is valid, create the DateTime
             return new DateTime(year, month, day, new PersianCalendar());
         }
 

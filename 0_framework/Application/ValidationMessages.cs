@@ -10,4 +10,6 @@ public static class ValidationMessages
     public const string InvalidFileFormat = "فرمت فایل مجاز نیست";
     public const string MaxLength = "مقدار وارد شده بیش از طول مجاز است";
     public const string CannotBeEmpty = "پارامتر نمی‌تواند خالی باشد";
+    public const string DateCannotBeEmpty = "تاریخ نمی‌تواند خالی باشد";
+    public const string DateValidFormat = "تاریخ باید با فرمت YYYY/MM/DD باشد";
 }

@@ -28,6 +28,7 @@ public class CreateArticle : EntityBase
     public string PictureTitle { get; set; }
 
     [Required(ErrorMessage = ValidationMessages.IsRequired)]
+    [ValidPersianDateFormat(ErrorMessage = ValidationMessages.DateValidFormat)]
     public string PublishDate { get; set; }
 
     [MaxLength(500, ErrorMessage = ValidationMessages.MaxLength)]
