@@ -18,17 +18,8 @@ public class ValidPersianDateFormat : ValidationAttribute, IClientModelValidator
         var persianDate = value as string;
         if (persianDate == null) return true; // Allow null values to be valid (if nullable)
 
-        // Check if the input is null or empty
-        if (string.IsNullOrWhiteSpace(persianDate))
-        {
+        if (string.IsNullOrWhiteSpace(persianDate) || persianDate.Length != 10 || persianDate[4] != '/' || persianDate[7] != '/')
             return false;
-        }
-
-        // Validate the length and structure
-        if (persianDate.Length != 10 || persianDate[4] != '/' || persianDate[7] != '/')
-        {
-            return false;
-        }
 
         // Extract year, month, day parts
         var yearPart = persianDate.Substring(0, 4);
@@ -36,25 +27,18 @@ public class ValidPersianDateFormat : ValidationAttribute, IClientModelValidator
         var dayPart = persianDate.Substring(8, 2);
 
         // Validate that year, month, and day are numeric
-        if (!int.TryParse(yearPart, out var year) || 
-            !int.TryParse(monthPart, out var month) || 
-            !int.TryParse(dayPart, out var day))
-        {
+        if (!int.TryParse(yearPart, out var year) || !int.TryParse(monthPart, out var month) || !int.TryParse(dayPart, out var day))
             return false;
+
+        if (month < 1 || month > 12 || day < 1 || day > 31 || (month == 2 && day > 29) || (new[] {4, 6, 9, 11}.Contains(month) && day > 30))
+            return false;
+        
+        if (month == 12)
+        {
+            if (day > (IsLeapYear(year) ? 29 : 28))
+                return false;
         }
 
-        // Validate month range (1 to 12)
-        if (month < 1 || month > 12)
-        {
-            return false;
-        }
-
-        // Validate day range (1 to 31)
-        // Note: For a more accurate day validation, consider month-specific limits
-        if (day < 1 || day > 31)
-        {
-            return false;
-        }
 
         // Additional checks can be added for months with fewer than 31 days
         // (e.g., April, June, September, November should have max 30 days)
@@ -62,4 +46,10 @@ public class ValidPersianDateFormat : ValidationAttribute, IClientModelValidator
 
         return true;
     }
+    
+    private bool IsLeapYear(int year)
+    {
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    }
+
 }
