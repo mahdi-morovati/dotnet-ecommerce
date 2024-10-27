@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using _0_framework.Application;
 using BlogManagement.Application.Contracts.Article;
 using BlogManagement.Domain.ArticleAgg;
@@ -22,6 +23,20 @@ public class ArticleApplication : IArticleApplication
     public OperationResult Create(CreateArticle command)
     {
         var operation = new OperationResult();
+        
+        
+        // Validate the model manually
+        var validationContext = new ValidationContext(command, null, null);
+        var validationResults = new List<ValidationResult>();
+        bool isValid = Validator.TryValidateObject(command, validationContext, validationResults, true);
+
+        if (!isValid)
+        {
+            string errorMessages = string.Join("; ", validationResults.Select(v => v.ErrorMessage));
+            return operation.Failed(errorMessages);
+        }
+
+        
         if (_articleRepository.Exists(x => x.Title == command.Title))
             return operation.Failed(ApplicationMessages.DuplicatedRecord);
 

@@ -19,7 +19,8 @@ public class ValidPersianDateFormat : ValidationAttribute, IClientModelValidator
         if (persianDate == null) return true; // Allow null values to be valid (if nullable)
 
         if (string.IsNullOrWhiteSpace(persianDate) || persianDate.Length != 10 || persianDate[4] != '/' || persianDate[7] != '/')
-            return false;
+            // return false;
+            throw new FormatException(ValidationMessages.DateValidFormat);
 
         // Extract year, month, day parts
         var yearPart = persianDate.Substring(0, 4);
@@ -28,15 +29,22 @@ public class ValidPersianDateFormat : ValidationAttribute, IClientModelValidator
 
         // Validate that year, month, and day are numeric
         if (!int.TryParse(yearPart, out var year) || !int.TryParse(monthPart, out var month) || !int.TryParse(dayPart, out var day))
-            return false;
+            throw new FormatException(ValidationMessages.DateIsYearMonthDayNumeric);
 
-        if (month < 1 || month > 12 || day < 1 || day > 31 || (month == 2 && day > 29) || (new[] {4, 6, 9, 11}.Contains(month) && day > 30))
-            return false;
+        if (month < 1 || month > 12)
+            throw new FormatException(ValidationMessages.DateValidMonthRange);
+        
+        if (day < 1 || day > 31)
+            throw new FormatException(ValidationMessages.DateValidateDayRange);
+        
+        if (new[] {7, 8, 9, 10, 11}.Contains(month) && day > 30)
+            throw new FormatException(ValidationMessages.DateMaxDaysInSecondHalfOfYear);
+        
         
         if (month == 12)
         {
-            if (day > (IsLeapYear(year) ? 29 : 28))
-                return false;
+            if (day > (IsLeapYear(year) ? 30 : 29))
+                throw new FormatException(ValidationMessages.DateDaysInLastMonthOfLeapYear);
         }
 
 
