@@ -60,7 +60,6 @@ public class ArticleApplicationTests
 
         // Act & Assert
         var exception = Assert.Throws<FormatException>(() => _articleApplication.Create(command));
-        // Assert.Equal(InvalidDates.TryGetValue(invalidPublishDate, out string result), exception.Message);
         InvalidDates.TryGetValue(invalidPublishDate, out string expectedMessage);
         Assert.Equal(expectedMessage, exception.Message);
     }
