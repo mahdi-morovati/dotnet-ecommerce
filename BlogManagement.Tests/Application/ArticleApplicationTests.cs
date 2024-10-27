@@ -1,10 +1,12 @@
 using _0_framework.Application;
-using Xunit;
 using BlogManagement.Application;
 using BlogManagement.Application.Contracts.Article;
 using BlogManagement.Domain.ArticleAgg;
 using BlogManagement.Domain.ArticleCategoryAgg;
 using Moq;
+using Xunit;
+
+namespace BlogManagement.Tests.Application;
 
 public class ArticleApplicationTests
 {
