@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
@@ -18,7 +17,7 @@ public class ValidPersianDateFormat : ValidationAttribute, IClientModelValidator
         var persianDate = value as string;
         if (persianDate == null) return true; // Allow null values to be valid (if nullable)
 
-        persianDate = NumberConverter.ConvertToEnglishNumbers(persianDate);
+        persianDate = persianDate.ToEnglishNumber();
 
         if (string.IsNullOrWhiteSpace(persianDate) || persianDate.Length != 10 || persianDate[4] != '/' || persianDate[7] != '/')
             // return false;
