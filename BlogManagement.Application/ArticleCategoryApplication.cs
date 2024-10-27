@@ -38,7 +38,7 @@ public class ArticleCategoryApplication : IArticleCategoryApplication
         var articleCategory = _articleCategoryRepository.Get(command.Id);
         if (articleCategory == null)
             return operation.Failed(ApplicationMessages.RecordNotFound);
-        if (_articleCategoryRepository.Exists(x => x.Name == command.Name && x.Id != command.Id))
+        if (!_articleCategoryRepository.Exists(x => x.Name == command.Name && x.Id != command.Id))
             return operation.Failed(ApplicationMessages.DuplicatedRecord);
 
         var slug = command.Slug.Slugify();

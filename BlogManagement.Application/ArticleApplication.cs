@@ -62,7 +62,7 @@ public class ArticleApplication : IArticleApplication
         var article = _articleRepository.Get(command.Id);
         if (article == null)
             return operation.Failed(ApplicationMessages.RecordNotFound);
-        if (_articleRepository.Exists(x => x.Title == command.Title && x.Id!= command.Id)) 
+        if (!_articleRepository.Exists(x => x.Title == command.Title && x.Id != command.Id)) 
             return operation.Failed(ApplicationMessages.DuplicatedRecord);
         
         var slug = command.Slug.Slugify();

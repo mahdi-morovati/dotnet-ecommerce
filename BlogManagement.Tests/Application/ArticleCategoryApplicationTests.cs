@@ -159,6 +159,39 @@ public class ArticleCategoryApplicationTests
         var exception = Assert.Throws<ArgumentException>(() => _articleCategoryApplication.Edit(command));
         Assert.Equal(ValidationMessages.CannotBeEmpty + " (Parameter 'name')", exception.Message);
     }
+    
+    [Fact]
+    public void Should_Throw_Exception_When_Name_Exists()
+    {
+        // Arrange
+        var command = new EditArticleCategory
+        {
+            Id = 1,
+            Name = "",
+            Description = "Exists Description",
+            Slug = "category",
+            Picture = _fileMock.Object,
+            PictureAlt = "Alt",
+            PictureTitle = "Title",
+            Keywords = "keywords",
+            MetaDescription = "Meta",
+            ShowOrder = 2
+        };
+
+        // تنظیم شبیه‌سازی برای بازیابی موجودیت
+        var existingCategory = new ArticleCategory("Existing Category", "existing_picture.jpg",
+            "Existing Alt", "Existing Title", "Existing Description", 1, "existing slug", "existing,keywords",
+            "Existing Meta", "existing-slug");
+        _repositoryMock.Setup(x => x.Get(command.Id)).Returns(existingCategory);
+        _repositoryMock.Setup(x => x.Exists(It.IsAny<Expression<Func<ArticleCategory, bool>>>())).Returns(false);
+        
+        // Act
+        var result = _articleCategoryApplication.Edit(command);
+
+        // Assert
+        Assert.False(result.IsSuccedded);
+        Assert.Equal(ApplicationMessages.DuplicatedRecord, result.Message);
+    }
 
     [Fact]
     public void Should_Return_Error_When_File_Has_Invalid_Extension()
