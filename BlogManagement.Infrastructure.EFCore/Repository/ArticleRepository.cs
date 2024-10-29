@@ -44,11 +44,12 @@ public class ArticleRepository : RepositoryBase<long, Article>, IArticleReposito
         var query = _context.Articles.Select(x => new ArticleViewModel
         {
             Id = x.Id,
-            Title = x.Title,
-            PublishDate = x.PublishDate.ToFarsi(),
             CategoryId = x.CategoryId,
             Category = x.Category.Name,
+            Picture = x.Picture,
+            PublishDate = x.PublishDate.ToFarsi(),
             ShortDescription = x.ShortDescription.Substring(0, Math.Min(x.ShortDescription.Length, 50)) + " ...",
+            Title = x.Title
         });
         if (!string.IsNullOrWhiteSpace(searchModel.Title))
         {

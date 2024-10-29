@@ -35,7 +35,9 @@ public class ArticleCategoryQuery : IArticleCategoryQuery
     public ArticleCategoryQueryModel? GetArticleCategory(string slug)
     {
         var articleCategory = _dbContext.ArticleCategories
+            .AsNoTracking() 
             .Include(x => x.Articles)
+            .Where(x => x.Slug == slug)
             .Select(x => new ArticleCategoryQueryModel
             {
                 Slug = x.Slug,
@@ -50,7 +52,7 @@ public class ArticleCategoryQuery : IArticleCategoryQuery
                 ArticlesCount = x.Articles.Count,
                 Articles = MapArticles(x.Articles)
             })
-           .FirstOrDefault(x => x.Slug == slug);
+           .FirstOrDefault();
 
         if (!string.IsNullOrWhiteSpace(articleCategory?.Keywords))
             articleCategory.KeywordList = articleCategory.Keywords.Split(",").ToList();
@@ -58,7 +60,7 @@ public class ArticleCategoryQuery : IArticleCategoryQuery
         return articleCategory;
     }
 
-    private List<ArticleQueryModel> MapArticles(List<Article> articles)
+    private static List<ArticleQueryModel> MapArticles(List<Article> articles)
     {
         return articles.Select(x => new ArticleQueryModel
         {
