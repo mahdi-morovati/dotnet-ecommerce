@@ -18,7 +18,8 @@ public class MaxFileSizeAttribute : ValidationAttribute, IClientModelValidator
         var file = value as IFormFile;
         if (file == null) return true;
 
-        return file.Length <= _maxFileSize;
+        var eq = file.Length <= _maxFileSize;
+        return eq;
     }
 
     public void AddValidation(ClientModelValidationContext context)

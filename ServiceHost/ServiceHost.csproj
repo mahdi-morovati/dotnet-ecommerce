@@ -8,6 +8,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\AccountManagement.Configuration\AccountManagement.Configuration.csproj" />
+      <ProjectReference Include="..\BlogManagement.Application.Contracts\BlogManagement.Application.Contracts.csproj" />
+      <ProjectReference Include="..\BlogManagement.Infrastructure.Configure\BlogManagement.Infrastructure.Configure.csproj" />
       <ProjectReference Include="..\DiscountManagement.Configuration\DiscountManagement.Configuration.csproj" />
       <ProjectReference Include="..\InventoryManagement.Application.Contract\InventoryManagement.Application.Contract.csproj" />
       <ProjectReference Include="..\InventoryManagement.Infrastructure.Configuration\InventoryManagement.Infrastructure.Configuration.csproj" />
@@ -81,6 +83,9 @@
       <UpToDateCheckInput Remove="Areas\Administration\Pages\Accounts\Role\Create.cshtml" />
       <UpToDateCheckInput Remove="Areas\Administration\Pages\Accounts\Role\Edit.cshtml" />
       <UpToDateCheckInput Remove="Areas\Administration\Pages\Accounts\Role\Index.cshtml" />
+      <UpToDateCheckInput Remove="Areas\Administration\Pages\Blog\Articles\Create.cshtml" />
+      <UpToDateCheckInput Remove="Areas\Administration\Pages\Blog\Articles\Edit.cshtml" />
+      <UpToDateCheckInput Remove="Areas\Administration\Pages\Blog\Articles\Index.cshtml" />
     </ItemGroup>
 
 </Project>
