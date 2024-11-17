@@ -7,8 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CommentManagement.Application.Contracts\CommentManagement.Application.Contracts.csproj" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CommentManagement.Application\CommentManagement.Application.csproj" />
       <ProjectReference Include="..\CommentManagement.Domain\CommentManagement.Domain.csproj" />
+      <ProjectReference Include="..\CommentManagement.Infrastructure.EFCore\CommentManagement.Infrastructure.EFCore.csproj" />
     </ItemGroup>
 
 </Project>

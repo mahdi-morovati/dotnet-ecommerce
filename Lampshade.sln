@@ -96,6 +96,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentManagement.Applicati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentManagement.Application", "CommentManagement.Application\CommentManagement.Application.csproj", "{3935C7C3-86B5-4949-B2F3-F731A475A4A1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cm.Infrastructure", "Cm.Infrastructure", "{DE0367BE-E101-4D63-BD4E-4E6E7BB9D875}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentManagement.Infrastructure.Configuration", "CommentManagement.Infrastructure.Configuration\CommentManagement.Infrastructure.Configuration.csproj", "{4A039068-8BDE-4368-8633-6CEEC2A1D5F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentManagement.Infrastructure.EFCore", "CommentManagement.Infrastructure.EFCore\CommentManagement.Infrastructure.EFCore.csproj", "{F87F6AE3-34A0-4F55-9D97-08388D697181}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -246,6 +252,14 @@ Global
 		{3935C7C3-86B5-4949-B2F3-F731A475A4A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3935C7C3-86B5-4949-B2F3-F731A475A4A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3935C7C3-86B5-4949-B2F3-F731A475A4A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A039068-8BDE-4368-8633-6CEEC2A1D5F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A039068-8BDE-4368-8633-6CEEC2A1D5F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A039068-8BDE-4368-8633-6CEEC2A1D5F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A039068-8BDE-4368-8633-6CEEC2A1D5F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F87F6AE3-34A0-4F55-9D97-08388D697181}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F87F6AE3-34A0-4F55-9D97-08388D697181}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F87F6AE3-34A0-4F55-9D97-08388D697181}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F87F6AE3-34A0-4F55-9D97-08388D697181}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1E86478F-3F3F-4840-96D6-ABC3D97654F5} = {0149C220-9CB3-4D9F-88F9-A1D4BD2E6CA6}
@@ -287,5 +301,8 @@ Global
 		{64A51413-5980-4233-8F9E-1759FE415B74} = {18A5E17B-BC0F-40B1-848E-5DE5691693A0}
 		{3569126D-3CA6-4E3D-B401-7E513855CFE3} = {64A51413-5980-4233-8F9E-1759FE415B74}
 		{3935C7C3-86B5-4949-B2F3-F731A475A4A1} = {64A51413-5980-4233-8F9E-1759FE415B74}
+		{DE0367BE-E101-4D63-BD4E-4E6E7BB9D875} = {18A5E17B-BC0F-40B1-848E-5DE5691693A0}
+		{4A039068-8BDE-4368-8633-6CEEC2A1D5F9} = {DE0367BE-E101-4D63-BD4E-4E6E7BB9D875}
+		{F87F6AE3-34A0-4F55-9D97-08388D697181} = {DE0367BE-E101-4D63-BD4E-4E6E7BB9D875}
 	EndGlobalSection
 EndGlobal
