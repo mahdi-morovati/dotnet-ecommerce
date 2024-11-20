@@ -18,7 +18,6 @@ A modular e-commerce system built with **ASP.NET Core** and **Onion Architecture
 - **Entity Framework Core**
 - **Razor Pages**
 - **SQL Server**
-- **Dependency Injection**
 
 
 ## License
