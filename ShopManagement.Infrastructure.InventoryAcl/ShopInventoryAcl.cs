@@ -4,6 +4,11 @@ using ShopManagement.Domain.Services;
 
 namespace ShopManagement.Infrastructure.InventoryAcl;
 
+/// <summary>
+/// this class uses the Anti-Corruption Layer (ACL) pattern
+/// to prevent couple shop module to order module
+/// 
+/// </summary>
 public class ShopInventoryAcl: IShopInventoryAcl
 {
     private readonly IInventoryApplication _inventoryApplication;

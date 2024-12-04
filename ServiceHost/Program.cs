@@ -76,7 +76,7 @@ builder.Services.AddRazorPages()
         options.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
     }
     )
-    .AddApplicationPart(typeof(ProductController).Assembly)
+    .AddApplicationPart(typeof(ProductController).Assembly) // To be able to use the API Controller we wrote
     .AddApplicationPart(typeof(InventoryController).Assembly);
 
 var app = builder.Build();
