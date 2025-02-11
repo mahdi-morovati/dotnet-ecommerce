@@ -8,3 +8,4 @@ riderModule.iml
 ServiceHost/wwwroot/ProductPictures
 ServiceHost/wwwroot/slides
 .vscode/
+.vs/
